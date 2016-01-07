@@ -22,7 +22,7 @@ Func ZoomOutBlueStacks() ;Zooms out
 EndFunc
 
 Func DefaultZoomOut($ZoomOutKey = "{DOWN}") ;Zooms out
-	Local $result0, $result1, $i = 0
+	Local $result0, $result1, $i = 0, $result2, $result3
 	_CaptureRegion(0, 0, $DEFAULT_WIDTH, 2)
 	If _GetPixelColor($aTopLeftClient[0], $aTopLeftClient[1]) <> Hex($aTopLeftClient[2], 6) Or _
 	_GetPixelColor($aTopMiddleClient[0], $aTopMiddleClient[1]) <> Hex($aTopMiddleClient[2], 6) Or _
@@ -35,7 +35,9 @@ Func DefaultZoomOut($ZoomOutKey = "{DOWN}") ;Zooms out
 			If $debugsetlog = 1 Then Setlog("Index = "&$i, $COLOR_PURPLE) ; Index=2X loop count if success, will be increment by 1 if controlsend fail
 			If _Sleep($iDelayZoomOut2) Then Return
 			$Result0 = ControlFocus($Title, "","")
-			$Result1 = ControlSend($Title, "", "", $ZoomOutKey)
+			$Result1 = ControlSend($Title, "", $app, "{CTRLDOWN}")
+			$Result2 = ControlSend($Title, "", $app, "{-}")
+			$Result3 = ControlSend($Title, "", $app, "{CTRLUP}")
 			If $debugsetlog = 1 Then Setlog("ControlFocus Result = "&$Result0 & ", ControlSend Result = "&$Result1& "|" & "@error= " & @error, $COLOR_PURPLE)
 			If $Result1 = 1 Then
 				$i += 1
