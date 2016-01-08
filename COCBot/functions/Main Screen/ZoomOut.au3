@@ -35,9 +35,9 @@ Func DefaultZoomOut($ZoomOutKey = "{DOWN}") ;Zooms out
 			If $debugsetlog = 1 Then Setlog("Index = "&$i, $COLOR_PURPLE) ; Index=2X loop count if success, will be increment by 1 if controlsend fail
 			If _Sleep($iDelayZoomOut2) Then Return
 			$Result0 = ControlFocus($Title, "","")
-			$Result1 = ControlSend($Title, "", $app, "{CTRLDOWN}")
-			$Result2 = ControlSend($Title, "", $app, "{-}")
-			$Result3 = ControlSend($Title, "", $app, "{CTRLUP}")
+			$Result1 = ControlSend($Title, "", "", "{CTRLDOWN}")
+			$Result2 = ControlSend($Title, "", "", "{-}")
+			$Result3 = ControlSend($Title, "", "", "{CTRLUP}")
 			If $debugsetlog = 1 Then Setlog("ControlFocus Result = "&$Result0 & ", ControlSend Result = "&$Result1& "|" & "@error= " & @error, $COLOR_PURPLE)
 			If $Result1 = 1 Then
 				$i += 1
