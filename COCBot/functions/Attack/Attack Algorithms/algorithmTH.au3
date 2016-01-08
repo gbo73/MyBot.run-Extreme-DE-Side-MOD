@@ -13,7 +13,7 @@
 ; Example .......: No
 ; ================================================================
 
-Global $Greed
+
 Func AttackTHGrid($troopKind, $iNbOfSpots = 1, $iAtEachSpot = 1, $Sleep = Random(800, 900, 1), $waveNb = 0)
 	#cs ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 		$troopKind : The Type of Troop
@@ -405,7 +405,7 @@ EndFunc   ;==>CastSpell
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-Func CheckOneStar($DelayInSec = 0, $Log = True, $CheckHeroes = True, $Greed = True)
+Func CheckOneStar($DelayInSec = 0, $Log = True, $CheckHeroes = True)
 
 	For $i = 0 To $DelayInSec
 
@@ -416,8 +416,6 @@ Func CheckOneStar($DelayInSec = 0, $Log = True, $CheckHeroes = True, $Greed = Tr
 		If _ColorCheck(_GetPixelColor($aWonOneStar[0], $aWonOneStar[1], True), Hex($aWonOneStar[2], 6), $aWonOneStar[3]) Then ;exit if 1 star
 			If $Log = True Then SetLog("Townhall has been destroyed!", $COLOR_ORANGE)
 			DrillZapTH()
-			_Sleep(1000)
-			Greedy()
 			_Sleep(1000)
 			If $Restart = True Then Return True
 
@@ -459,39 +457,4 @@ Func CheckOneStar($DelayInSec = 0, $Log = True, $CheckHeroes = True, $Greed = Tr
 	Return False ; Continue
 
 EndFunc   ;==>CheckOneStar
-
-Func Greedy()
-
-	If $isSnipeWhileTrain = True And $greedOneTime <> 1 And $ichkSWTGreedy = 1 Then
-		SetLog("Greedy mode: Activated")
-		If checkDeadBase() Then
-			SetLog("Greedy mode: Attacking...")
-			$iMatchMode = $DB
-			$greedOneTime = True ; reset back to zero in mybot.run.au3 @ top Func runBot()
-			PrepareAttack($iMatchMode)
-			If $Restart = True Then Return
-			Attack()
-			If $Restart = True Then Return
-			Return
-		Else
-			SetLog("Greedy mode: Not a Dead Village")
-		EndIf
-	Else
-		If $greedOneTime <> 1 And $ichkGreedy = 1 And $isSnipeWhileTrain = False Then
-			SetLog("Greedy mode: Activated")
-			If checkDeadBase() Then
-				SetLog("Greedy mode: Attacking...")
-				$iMatchMode = $DB
-				$greedOneTime = True ; reset back to zero in mybot.run.au3 @ top Func runBot()
-				PrepareAttack($iMatchMode)
-				If $Restart = True Then Return
-				Attack()
-				If $Restart = True Then Return
-				Return
-			Else
-				SetLog("Greedy mode: Not a Dead Village")
-			EndIf
-		EndIf
-	EndIf
-EndFunc
 
