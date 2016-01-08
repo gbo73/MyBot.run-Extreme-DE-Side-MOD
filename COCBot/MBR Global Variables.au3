@@ -825,10 +825,6 @@ Global $Is_SearchLimit = False
 
 Global $canRequestCC = True
 
-;Greedy Mode Top
-Global $greedOneTime = 0, $Greedy
-Global $ichkGreedy, $ichkSWTGreedy
-;Greedy Mode Bottom
 
 ; Heroes upgrade
 Global $ichkUpgradeKing = 0
