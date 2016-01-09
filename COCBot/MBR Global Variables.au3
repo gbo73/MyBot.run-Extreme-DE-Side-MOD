@@ -333,6 +333,7 @@ Global $ichkSmartLightSpell
 global $ichkTrainLightSpell
 Global $iDrills[4][4] = [[-1, -1, -1, -1], [-1, -1, -1, -1], [-1, -1, -1, -1], [-1, -1, -1, -1]] ; [LocX, LocY, BldgLvl, Quantity=filled by other functions]
 Global $smartZapGain = 0
+Global $iSnipeSprint = 0
 Global $NumLTSpellsUsed = 0
 Global $ichkDrillZapTH
 Global $itxtMinDark

@@ -201,11 +201,15 @@
 
 	    $y += 27
 		GUICtrlCreateIcon($pIconLib, $eIcnDrill, $x - 16, $y, 24, 24)
-		$chkDrillZapTH = GUICtrlCreateCheckbox("Drill Zap On TH Snipe", $x + 12, $y+1, -1, -1)
+		$chkDrillZapTH = GUICtrlCreateCheckbox("Zap De Drills", $x + 12, $y+1, -1, -1)
 		$txtTip = "Use This If You Want To Zap Drill When TH Snipping"
 		GUICtrlSetTip(-1, $txtTip)
 		GUICtrlSetState(-1, $GUI_DISABLE)
 
+		$chkSnipeSprint = GUICtrlCreateCheckbox("Beta Snipe Sprint", $x + 100, $y+1, -1, -1)
+		$txtTip = "Use This If You have read the post on how to use it"
+		GUICtrlSetTip(-1, $txtTip)
+		GUICtrlSetState(-1, $GUI_DISABLE)
 
 
 ;~ 		$btnTestTHcsv = GUICtrlCreateButton("Test TH attack in log", $x , $y + 45, -1, -1)

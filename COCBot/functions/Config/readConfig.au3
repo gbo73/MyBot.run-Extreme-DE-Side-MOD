@@ -304,6 +304,7 @@ Func readConfig() ;Reads config and sets it to the variables
 		$iCmbWeakMortar[$TS] = IniRead($config, "advanced", "TSWeakMortar", "5")
 		$iCmbWeakWizTower[$TS] = IniRead($config, "advanced", "TSWeakWizTower", "4")
 
+        $iSnipeSprint = IniRead($config, "advanced", "chkSnipeSprint", "0")
 
 		;atk their king
 		;atk their queen
