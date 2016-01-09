@@ -124,7 +124,7 @@ Func PrepareAttack($pMatchMode, $Remaining = False) ;Assigns troops
     Next
 	If $iSnipeSprint = 1 AND $iSnipeSprintTroopCount<40 Then
 		SetLog("Too few troops to continue snipe sprint.")
-		$iSnipeSprint = 0
+        $iSnipeSprintCount = 0
 		$Restart = True
 		checkMainScreen()
 	EndIf
