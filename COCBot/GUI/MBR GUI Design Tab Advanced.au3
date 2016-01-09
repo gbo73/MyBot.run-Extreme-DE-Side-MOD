@@ -31,7 +31,7 @@
 			GUICtrlSetState(-1, $GUI_DISABLE)
 		$cmbAttackNowDelay = GUICtrlCreateCombo("", $x + 20, $y + 1, 35, 25, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
 			GUICtrlSetTip(-1, $txtTip)
-			GUICtrlSetData(-1, "5|4|3|2|1","3") ; default value 3
+			GUICtrlSetData(-1, "5|4|3|2|1|0","3") ; default value 3
 			GUICtrlSetState(-1, $GUI_DISABLE)
 		$lblAttackNowSec = GUICtrlCreateLabel(GetTranslated(4,9, "sec. delay"), $x + 57, $y + 4, -1, -1)
 			GUICtrlSetTip(-1, $txtTip)
