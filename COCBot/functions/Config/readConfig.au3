@@ -282,7 +282,7 @@ Func readConfig() ;Reads config and sets it to the variables
 		$iUnBrkMaxDark = IniRead($config, "advanced", "maxUnBrkdark", "10000")
 
 		$iCmbTsSearchMode = IniRead($config, "advanced", "TsSearchMode", "2")
-		$iCmbTsMeetGE = IniRead($config, "search", "DBMeetGE", "1")
+		$iCmbTsMeetGE = IniRead($config, "search", "TSMeetGE", "1")
 
         ;Not all of these are used, but the loop may expect them, so it matches $LB and $TS
 		$iChkEnableAfter[$TS] = IniRead($config, "advanced", "TSEnableAfter", "0")

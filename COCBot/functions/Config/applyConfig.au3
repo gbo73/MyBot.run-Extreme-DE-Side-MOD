@@ -588,6 +588,9 @@ Func applyConfig() ;Applies the data from config to the controls in GUI
 	GUICtrlSetData($txtUnBrkMaxDark, $iUnBrkMaxDark)
 	chkUnbreakable()
 
+	_GUICtrlComboBox_SetCurSel($cmbTSMeetGE, $iCmbMeetGE[$TS])
+	cmbTSMeetGE()
+
 	_GUICtrlComboBox_SetCurSel($cmbTsSearchMode, $iCmbTsSearchMode)
 	If $iChkMeetOne[$TS] = 1 Then
 		GUICtrlSetState($chkTsMeetOne, $GUI_CHECKED)
