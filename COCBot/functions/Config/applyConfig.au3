@@ -610,6 +610,11 @@ Func applyConfig() ;Applies the data from config to the controls in GUI
 	GUICtrlSetData($txtTSMinGoldPlusElixir, $iMinGoldPlusElixir[$TS])
 	GUICtrlSetData($txtTSMinDarkElixir, $iMinDark[$TS])
 
+   If $iSnipeSprint = 1 Then
+	  GUICtrlSetState($chkSnipeSprint, $GUI_CHECKED)
+   Else
+	  GUICtrlSetState($chkSnipeSprint, $GUI_UNCHECKED)
+   EndIf
 
     ;attk their king
 	;attk their queen

@@ -133,7 +133,6 @@ WEnd
 
 Func runBot() ;Bot that runs everything in order
 	$TotalTrainedTroops = 0
-	Local $iSnipeSprintCount = 0
 	While 1
 		$Restart = False
 		$fullArmy = False
