@@ -31,7 +31,7 @@
 			GUICtrlSetState(-1, $GUI_DISABLE)
 		$cmbAttackNowDelay = GUICtrlCreateCombo("", $x + 20, $y + 1, 35, 25, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
 			GUICtrlSetTip(-1, $txtTip)
-			GUICtrlSetData(-1, "5|4|3|2|1","3") ; default value 3
+			GUICtrlSetData(-1, "5|4|3|2|1|0","3") ; default value 3
 			GUICtrlSetState(-1, $GUI_DISABLE)
 		$lblAttackNowSec = GUICtrlCreateLabel(GetTranslated(4,9, "sec. delay"), $x + 57, $y + 4, -1, -1)
 			GUICtrlSetTip(-1, $txtTip)
@@ -201,11 +201,15 @@
 
 	    $y += 27
 		GUICtrlCreateIcon($pIconLib, $eIcnDrill, $x - 16, $y, 24, 24)
-		$chkDrillZapTH = GUICtrlCreateCheckbox("Drill Zap On TH Snipe", $x + 12, $y+1, -1, -1)
+		$chkDrillZapTH = GUICtrlCreateCheckbox("Zap De Drills", $x + 12, $y+1, -1, -1)
 		$txtTip = "Use This If You Want To Zap Drill When TH Snipping"
 		GUICtrlSetTip(-1, $txtTip)
 		GUICtrlSetState(-1, $GUI_DISABLE)
 
+		$chkSnipeSprint = GUICtrlCreateCheckbox("Beta Snipe Sprint", $x + 100, $y+1, -1, -1)
+		$txtTip = "Use This If You have read the post on how to use it"
+		GUICtrlSetTip(-1, $txtTip)
+		GUICtrlSetState(-1, $GUI_DISABLE)
 
 
 ;~ 		$btnTestTHcsv = GUICtrlCreateButton("Test TH attack in log", $x , $y + 45, -1, -1)
