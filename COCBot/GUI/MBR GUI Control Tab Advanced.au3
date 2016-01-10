@@ -59,6 +59,8 @@ Func chkSnipeWhileTrain()
 		GUICtrlSetState($txtminArmyCapacityTHSnipe, $GUI_ENABLE)
 		GUICtrlSetState($lblSWTTiles, $GUI_ENABLE)
 		GUICtrlSetState($txtSWTTiles, $GUI_ENABLE)
+		GUICtrlSetState($lblmaxArmyCapacityTHSnipe, $GUI_ENABLE)
+		GUICtrlSetState($txtmaxArmyCapacityTHSnipe, $GUI_ENABLE)
 	Else
 		$iChkSnipeWhileTrain = 0
 		GUICtrlSetState($lblSearchlimit, $GUI_DISABLE)
@@ -67,6 +69,8 @@ Func chkSnipeWhileTrain()
 		GUICtrlSetState($txtminArmyCapacityTHSnipe, $GUI_DISABLE)
 		GUICtrlSetState($lblSWTTiles, $GUI_DISABLE)
 		GUICtrlSetState($txtSWTTiles, $GUI_DISABLE)
+		GUICtrlSetState($lblmaxArmyCapacityTHSnipe, $GUI_DISABLE)
+		GUICtrlSetState($txtmaxArmyCapacityTHSnipe, $GUI_DISABLE)
 	EndIf
 	GUICtrlSetState($ChkSnipeWhileTrain, $GUI_ENABLE)
 

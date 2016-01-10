@@ -632,6 +632,7 @@ Func readConfig() ;Reads config and sets it to the variables
 		$iChkSnipeWhileTrain = IniRead($config, "SnipeWhileTrain", "chkSnipeWhileTrain", "0")
 		$itxtSearchlimit = IniRead($config, "SnipeWhileTrain", "txtSearchlimit", "15")
 		$itxtminArmyCapacityTHSnipe = IniRead($config, "SnipeWhileTrain", "txtminArmyCapacityTHSnipe", "35")
+		$itxtmaxArmyCapacityTHSnipe = IniRead($config, "SnipeWhileTrain", "txtmaxArmyCapacityTHSnipe", "85")
 		$itxtSWTtiles = IniRead($config, "SnipeWhileTrain", "SWTtiles", "1")
 
 ;Profile Switch

@@ -819,6 +819,7 @@ Global $tempSnipeWhileTrain[8] = [0, 0, 0, 0, 0, 0, 0, 0]
 Global $iChkSnipeWhileTrain = 0
 Global $itxtSearchlimit = 15
 Global $itxtminArmyCapacityTHSnipe = 35
+Global $itxtmaxArmyCapacityTHSnipe = 85
 Global $itxtSWTtiles = 1
 
 Global $iChkRestartSearchLimit  = 0

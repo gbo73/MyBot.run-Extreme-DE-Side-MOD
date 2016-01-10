@@ -1498,6 +1498,7 @@ Func applyConfig() ;Applies the data from config to the controls in GUI
 	EndIf
 	GUICtrlSetData($txtSearchlimit, $itxtSearchlimit)
 	GUICtrlSetData($txtminArmyCapacityTHSnipe, $itxtminArmyCapacityTHSnipe)
+	GUICtrlSetData($txtmaxArmyCapacityTHSnipe, $itxtmaxArmyCapacityTHSnipe)
 	GUICtrlSetData($txtSWTTiles, $itxtSWTtiles)
 	ChkSnipeWhileTrain()
 
