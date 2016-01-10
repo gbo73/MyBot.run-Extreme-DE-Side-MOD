@@ -8,7 +8,7 @@ Func LaunchSideAttackTroop($listInfoDeploy, $CC, $King, $Queen, $Warden)
 
 	If $debugSetlog = 1 Then SetLog("LaunchTroop2 with CC " & $CC & ", K " & $King & ", Q " & $Queen & ", W " & $Warden , $COLOR_PURPLE)
 
-	If $iMatchMode = $LB And $iChkDeploySettings[$LB] >= 5 Then ; Used for DE or TH side attack
+	If $iMatchMode = $LB And $iChkDeploySettings[$LB] >= 6 Then ; Used for DE or TH side attack
 		Local $RandomEdge = $Edges[$BuildingEdge]
 		Local $RandomXY = 2
 	Else
