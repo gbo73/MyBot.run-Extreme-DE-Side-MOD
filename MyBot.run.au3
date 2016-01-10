@@ -240,9 +240,9 @@ Func runBot() ;Bot that runs everything in order
 			SaveStatChkTownHall()
 			SaveStatChkDeadBase()
 			If $CommandStop <> 0 And $CommandStop <> 3 Then
-				if $iSnipeSprint = 1 Then
+				if $iSnipeSprint > 0 Then
 					SetLog("Beginning snipe sprint")
-					$iSnipeSprintCount = 10
+					$iSnipeSprintCount = 5 * $iSnipeSprint
 				EndIf
 				AttackMain()
 				If $OutOfGold = 1 Then

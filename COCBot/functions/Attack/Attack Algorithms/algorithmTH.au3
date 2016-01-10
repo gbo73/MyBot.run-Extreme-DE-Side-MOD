@@ -135,6 +135,8 @@ Func AttackTHGrid($troopKind, $iNbOfSpots = 1, $iAtEachSpot = 1, $Sleep = Random
 
 	If $THi > 15 And ($THside = 1 Or $THside = 3) Then SwitchDeployBtmTH($iAtEachSpot, $iNbOfSpots)
 
+DeployTHNormal($iAtEachSpot, $iNbOfSpots)
+
 	If $troopKind >= $eBarb And $troopKind <= $eLava Then
 		If $TroopCountBeg <> Number(ReadTroopQuantity($THtroop)) Then
 			$NumTroopDeployed = $TroopCountBeg - Number(ReadTroopQuantity($THtroop))
@@ -232,6 +234,8 @@ Func SwitchDeployBtmTH($iAtEachSpot, $iNbOfSpots)
 			DeployBtmTHFewZooms($iAtEachSpot, $iNbOfSpots)
 		Case 2
 			DeployBtmTHOnSides($iAtEachSpot, $iNbOfSpots)
+		case 3
+			DeployTHNormal($iAtEachSpot, $iNbOfSpots)
 	EndSwitch
 
 EndFunc   ;==>SwitchDeployBtmTH

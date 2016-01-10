@@ -159,7 +159,7 @@
         $y +=25
 		$lblAttackBottomType = GUICtrlCreateLabel(GetTranslated(4,41, "If TH is at bottom") & ":", $x -15 , $y + 5, 90, -1, $SS_RIGHT)
 		$cmbAttackbottomType = GUICtrlCreateCombo("",  $x + 80, $y, 120, 21, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
-			GUICtrlSetData(-1, GetTranslated(4,42, "Deploy: Zoomed In")&"|" & GetTranslated(4,43, "Deploy: On Sides"), GetTranslated(4,43, -1))
+			GUICtrlSetData(-1, GetTranslated(4,42, "Deploy: Zoomed In")&"|" & GetTranslated(4,43, "Deploy: On Sides")&"|" & GetTranslated(99,2, "Deploy: Normal"), GetTranslated(4,43, -1))
 			$txtTip = GetTranslated(4,44, "Select your strategy to deploy troops when the TH is detected on the Bottom of the screen!") & @CRLF & GetTranslated(4,45, "Zoomed in • Zoom in first, then Attack from bottom.") & @CRLF & GetTranslated(4,46, "On Sides • Try to get the TH from the left and right without zooming in, your troops may pick another target!")
 			GUICtrlSetTip(-1, $txtTip)
 			;GUICtrlSetState(-1, $GUI_DISABLE)
@@ -206,8 +206,12 @@
 		GUICtrlSetTip(-1, $txtTip)
 		GUICtrlSetState(-1, $GUI_DISABLE)
 
-		$chkSnipeSprint = GUICtrlCreateCheckbox("Beta Snipe Sprint", $x + 100, $y+1, -1, -1)
+		$cmbSnipeSprint = GUICtrlCreateCombo("", $x + 95, $y+1, 40, -1, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
+		GUICtrlSetData(-1, "0|5|10|15","0")
 		$txtTip = "Use This If You have read the post on how to use it"
+		GUICtrlSetTip(-1, $txtTip)
+		GUICtrlSetState(-1, $GUI_DISABLE)
+		$lblSnipeSprint = GUICtrlCreateLabel("Snipe Sprint", $x +140, $y + 4, 177, -1, -1)
 		GUICtrlSetTip(-1, $txtTip)
 		GUICtrlSetState(-1, $GUI_DISABLE)
 

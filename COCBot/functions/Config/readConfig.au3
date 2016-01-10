@@ -304,7 +304,7 @@ Func readConfig() ;Reads config and sets it to the variables
 		$iCmbWeakMortar[$TS] = IniRead($config, "advanced", "TSWeakMortar", "5")
 		$iCmbWeakWizTower[$TS] = IniRead($config, "advanced", "TSWeakWizTower", "4")
 
-        $iSnipeSprint = IniRead($config, "advanced", "chkSnipeSprint", "0")
+        $iSnipeSprint = IniRead($config, "advanced", "cmbSnipeSprint", "0")
 
 		;atk their king
 		;atk their queen
@@ -320,7 +320,8 @@ Func readConfig() ;Reads config and sets it to the variables
 	    For $i = 1 to 24
 		   $DeDeployType[$i-1] = IniRead($config, "options", "DeDeployType" & $I, $DeDeployEmptyString)
 		   $DeDeployPosition[$i-1] = IniRead($config, "options", "DeDeployPosition" & $I, "0")
-        Next
+		Next
+
 	    ;End Battle Settings------------------------------------------------------------------------
 		$sTimeStopAtk = IniRead($config, "endbattle", "txtTimeStopAtk", "20")
 		$iChkTimeStopAtk = IniRead($config, "endbattle", "chkTimeStopAtk", "1")

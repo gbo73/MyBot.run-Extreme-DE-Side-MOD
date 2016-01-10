@@ -610,11 +610,7 @@ Func applyConfig() ;Applies the data from config to the controls in GUI
 	GUICtrlSetData($txtTSMinGoldPlusElixir, $iMinGoldPlusElixir[$TS])
 	GUICtrlSetData($txtTSMinDarkElixir, $iMinDark[$TS])
 
-   If $iSnipeSprint = 1 Then
-	  GUICtrlSetState($chkSnipeSprint, $GUI_CHECKED)
-   Else
-	  GUICtrlSetState($chkSnipeSprint, $GUI_UNCHECKED)
-   EndIf
+	_GUICtrlComboBox_SetCurSel($cmbSnipeSprint, $iSnipeSprint)
 
     ;attk their king
 	;attk their queen
@@ -661,7 +657,7 @@ Func applyConfig() ;Applies the data from config to the controls in GUI
 		 Else
 			_GUICtrlComboBox_SetCurSel(Eval("cmbDeDeploy" & StringRight("0" & $i,2)), $DeDeployEmptyString)
 		 EndIf
-    Next
+   Next
 
 	;End Battle Settings------------------------------------------------------------------------
 	GUICtrlSetData($txtTimeStopAtk, $sTimeStopAtk)
