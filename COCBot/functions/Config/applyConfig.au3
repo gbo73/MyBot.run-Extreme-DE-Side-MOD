@@ -638,6 +638,14 @@ Func applyConfig() ;Applies the data from config to the controls in GUI
 	  GUICtrlSetState($chkDrillZapTH, $GUI_UNCHECKED)
    EndIf
 
+   If $useFFBarchST = 1 Then
+		GUICtrlSetState($chkChangeFF, $GUI_CHECKED)
+	Else
+		GUICtrlSetState($chkChangeFF, $GUI_UNCHECKED)
+	Endif
+
+	GUICtrlSetData($txtTHpercentCollectors, $percentCollectors)
+
    For $i = 1 to 24
 	  	GUICtrlSetData(Eval("txtDeStyle" & StringRight("0" & $i,2)), $DeDeployPosition[$i-1])
 		If $DeDeployType[$i-1] <> $DeDeployEmptyString Then
