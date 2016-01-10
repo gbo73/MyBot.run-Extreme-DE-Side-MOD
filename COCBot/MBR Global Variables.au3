@@ -867,7 +867,7 @@ Global $ichkTrophySwitchMax, $itxtMaxTrophyAmount, $icmbTrophyMaxProfile, $ichkT
 ;Hero Healing Filter
 Global $LBsave[17], $LBHeroFilter, $LBAQFilter, $LBBKFilter, $iSkipCentreDE, $iSkipUndetectedDE, $DECorepix = 15
 Global $LBBKEQFilter
-Global 	$iCmbMeetGEHero, $iChkMeetDEHero, $iChkMeetTrophyHero, $iChkMeetTHHero, $iChkMeetTHOHero, $iChkWeakBaseHero, $iChkMeetOneHero, $iEnableAfterCountHero, $iMinGoldHero
+Global $iCmbMeetGEHero, $iChkMeetDEHero, $iChkMeetTrophyHero, $iChkMeetTHHero, $iChkMeetTHOHero, $iChkWeakBaseHero, $iChkMeetOneHero, $iEnableAfterCountHero, $iMinGoldHero
 Global $iMinElixirHero, $iMinGoldPlusElixirHero,$iMinDarkHero, $iMinTrophyHero, $iCmbTHHero, $iCmbWeakMortarHero, $iCmbWeakWizTowerHero, $iMaxTHHero
 Global $THString
 
@@ -888,3 +888,11 @@ Global $cmbTroopComp
 Global $ichkCoCStats = 0
 Global $stxtAPIKey = ""
 Global $MyApiKey = ""
+
+; savetroops
+Global $saveTroops = 0
+Global $countFindPixCloser = 0
+Global $countCollectorexposed = 0
+
+; Attack settings
+Global Enum $eOneSide, $eTwoSides, $eThreeSides, $eAllSides, $eSmartSave, $eFourFinger, $eDESide, $eTHSide

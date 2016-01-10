@@ -37,9 +37,9 @@
 			GUICtrlSetOnEvent(-1, "txtMinDark")
 			    GUICtrlSetState(-1, $GUI_DISABLE)
 
-	Local $x = 30, $y = 130
+	Local $x = 60, $y = 130
 
-	$grpStatuszap = GUICtrlCreateGroup("Status", $x + 210, $y +10, 205, 50)
+	$grpStatuszap = GUICtrlCreateGroup("Status", $x + 220, $y +10, 170, 50)
 		$y += 5
 		$picSmartZap = GUICtrlCreateIcon($pIconLib, $eIcnDark, $x + 285, $y + 25, 21, 21)
 		$lblSmartZap = GUICtrlCreateLabel("0", $x+200, $y + 23, 80, 30, $SS_RIGHT)
@@ -47,12 +47,23 @@
 		GUICtrlSetColor(-1,0x279B61)
 		$txtTip = "The amount of Dark Elixir you zapped."
 	    GUICtrlSetTip(-1, $txtTip)
-		GUICtrlCreateIcon($pIconLib, $eIcnLightSpell, $x + 375, $y + 25, 21, 21)
-		$lblLightningUsed = GUICtrlCreateLabel("0", $x+310, $y + 23,60, 30, $SS_RIGHT)
+		GUICtrlCreateIcon($pIconLib, $eIcnLightSpell, $x + 355, $y + 25, 21, 21)
+		$lblLightningUsed = GUICtrlCreateLabel("0", $x+290, $y + 23,60, 30, $SS_RIGHT)
 		GUICtrlSetFont(-1,12, $FW_BOLD,Default,"arial",$CLEARTYPE_QUALITY)
 		GUICtrlSetColor(-1,0x279B61)
 		$txtTip = "The amount of Lightning Spells Used in zapping."
 	    GUICtrlSetTip(-1, $txtTip)
+
+   Local $x = 190, $y = 150
+	  $grpSaveTroops = GUICtrlCreateGroup("SaveTroop", $x, $y - 20, 90, 65)
+         $chkChangeFF = GUICtrlCreateCheckbox("Use FF", $x, $y -5, -1, -1)
+			$txtTip = "Change to FF Barch if less than % of collectors near RED LINE."
+			GUICtrlSetTip(-1, $txtTip)
+		$txtTHpercentCollectors = GUICtrlCreateInput("80", $x, $y + 20, 35, 21, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
+			GUICtrlSetTip(-1, $txtTip)
+			GUICtrlSetLimit(-1, 100)
+		$lblChangeFF = GUICtrlCreateLabel("% collec.", $x + 40, $y + 25, -1, -1)
+		   	GUICtrlSetTip(-1, $txtTip)
 
     ;;;;;;;;;;;;;;;;;
     ;;; TROOP Deployment
