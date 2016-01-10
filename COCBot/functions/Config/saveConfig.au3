@@ -662,11 +662,7 @@ Func saveConfig() ;Saves the controls settings to the config
 	IniWrite($config, "advanced", "TSsearchGoldPlusElixir", GUICtrlRead($txtTSMinGoldPlusElixir))
 	IniWrite($config, "advanced", "TSsearchDark", GUICtrlRead($txtTSMinDarkElixir))
 
-	If GUICtrlRead($chkSnipeSprint) = $GUI_CHECKED Then
-		IniWrite($config, "advanced", "chkSnipeSprint", "1")
-	Else
-		IniWrite($config, "advanced", "chkSnipeSprint", "0")
-	 EndIf
+    IniWrite($config, "advanced", "cmbSnipeSprint", _GUICtrlComboBox_GetCurSel($cmbSnipeSprint))
 	;atk their king
 	;attk their queen
 
@@ -1401,6 +1397,7 @@ Func saveConfig() ;Saves the controls settings to the config
 	EndIf
 	IniWrite($config, "SnipeWhileTrain", "txtSearchlimit", GUICtrlRead($txtSearchlimit))
 	IniWrite($config, "SnipeWhileTrain", "txtminArmyCapacityTHSnipe", GUICtrlRead($txtminArmyCapacityTHSnipe))
+	IniWrite($config, "SnipeWhileTrain", "txtmaxArmyCapacityTHSnipe", GUICtrlRead($txtmaxArmyCapacityTHSnipe))
 	IniWrite($config, "SnipeWhileTrain", "SWTtiles", GUICtrlRead($txtSWTTiles))
 
 	;Multilanguage

@@ -304,7 +304,7 @@ Func readConfig() ;Reads config and sets it to the variables
 		$iCmbWeakMortar[$TS] = IniRead($config, "advanced", "TSWeakMortar", "5")
 		$iCmbWeakWizTower[$TS] = IniRead($config, "advanced", "TSWeakWizTower", "4")
 
-        $iSnipeSprint = IniRead($config, "advanced", "chkSnipeSprint", "0")
+        $iSnipeSprint = IniRead($config, "advanced", "cmbSnipeSprint", "0")
 
 		;atk their king
 		;atk their queen
@@ -320,7 +320,8 @@ Func readConfig() ;Reads config and sets it to the variables
 	    For $i = 1 to 24
 		   $DeDeployType[$i-1] = IniRead($config, "options", "DeDeployType" & $I, $DeDeployEmptyString)
 		   $DeDeployPosition[$i-1] = IniRead($config, "options", "DeDeployPosition" & $I, "0")
-        Next
+		Next
+
 	    ;End Battle Settings------------------------------------------------------------------------
 		$sTimeStopAtk = IniRead($config, "endbattle", "txtTimeStopAtk", "20")
 		$iChkTimeStopAtk = IniRead($config, "endbattle", "chkTimeStopAtk", "1")
@@ -631,6 +632,7 @@ Func readConfig() ;Reads config and sets it to the variables
 		$iChkSnipeWhileTrain = IniRead($config, "SnipeWhileTrain", "chkSnipeWhileTrain", "0")
 		$itxtSearchlimit = IniRead($config, "SnipeWhileTrain", "txtSearchlimit", "15")
 		$itxtminArmyCapacityTHSnipe = IniRead($config, "SnipeWhileTrain", "txtminArmyCapacityTHSnipe", "35")
+		$itxtmaxArmyCapacityTHSnipe = IniRead($config, "SnipeWhileTrain", "txtmaxArmyCapacityTHSnipe", "85")
 		$itxtSWTtiles = IniRead($config, "SnipeWhileTrain", "SWTtiles", "1")
 
 ;Profile Switch
