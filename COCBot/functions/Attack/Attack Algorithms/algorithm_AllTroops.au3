@@ -165,6 +165,7 @@ Func getNumberOfSides() ;Returns the number of sides to attack from
         Case $eAllSides ;All sides ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
             SetLog("Attacking on all sides", $COLOR_BLUE)
             $nbSides = 4
+<<<<<<< HEAD
 	    Case $eSmartSave ;Save Troops Style ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 			SetLog("Attacking with save troops for collectors", $COLOR_BLUE)
 			$nbSides = 4
@@ -176,6 +177,22 @@ Func getNumberOfSides() ;Returns the number of sides to attack from
             SetLog("Attacking on Dark Elixir Side.", $COLOR_BLUE)
 			$nbSides = 1
         Case $eTHSide ;TH Side - Live Base only ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=======
+	    Case 4 ;Save Troops Style ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+			SetLog("Attacking with save troops for collectors", $COLOR_BLUE)
+
+			$nbSides = 4
+			$saveTroops = 1
+        Case 5 ;Four Finger ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            SetLog("Attacking four finger fight style", $COLOR_BLUE)
+            $nbSides = 5
+
+        Case 6 ;DE Side - Live Base only ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            SetLog("Attacking on Dark Elixir Side.", $COLOR_BLUE)
+
+            $nbSides = 1
+        Case 7 ;TH Side - Live Base only ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+>>>>>>> a5cf4e04bd84e613132fc050a740318855d7a581
             SetLog("Attacking on Town Hall Side.", $COLOR_BLUE)
             $nbSides = 1
     EndSwitch
@@ -185,7 +202,11 @@ EndFunc
 
 Func getDeploymentInfo($nbSides) ;Returns the Deployment array for LaunchTroops
     ; $ListInfoDeploy = [Troop, No. of Sides, $WaveNb, $MaxWaveNb, $slotsPerEdge]
+<<<<<<< HEAD
     If $iMatchMode = $LB And ($iChkDeploySettings[$LB] = $eDESide Or $iChkDeploySettings[$LB] = $eTHSide) Then ; Customized side wave deployment here for DE and TH side
+=======
+    If $iMatchMode = $LB And $iChkDeploySettings[$LB] >= 6 Then ; Customized side wave deployment here for DE and TH side
+>>>>>>> a5cf4e04bd84e613132fc050a740318855d7a581
         If $debugSetlog = 1 Then SetLog("List Deploy for Customized Side attack", $COLOR_PURPLE)
 
         Local $listInfoDeploy[24][5]
@@ -209,7 +230,11 @@ Func getDeploymentInfo($nbSides) ;Returns the Deployment array for LaunchTroops
             $listInfoDeploy[$i][3] = $waveCount
             $listInfoDeploy[$i][4] = $DeDeployPosition[$i]
         Next
+<<<<<<< HEAD
     ElseIf $iChkDeploySettings[$iMatchMode] = $eFourFinger Then ;Four Finger deployment
+=======
+    ElseIf $iChkDeploySettings[$iMatchMode] = 5 Then ;Four Finger deployment
+>>>>>>> a5cf4e04bd84e613132fc050a740318855d7a581
         If $debugSetlog = 1 Then SetLog("ListDeploy for Four Finger attack", $COLOR_PURPLE)
 
         Local $listInfoDeploy[11][5] = [[$eGiant, $nbSides, 1, 1, 2] _
@@ -223,10 +248,15 @@ Func getDeploymentInfo($nbSides) ;Returns the Deployment array for LaunchTroops
             , [$eMini, $nbSides, 1, 1, 0] _
             , [$eGobl, $nbSides, 2, 2, 0] _
             , ["HEROES", 1, 2, 1, 1] _
+<<<<<<< HEAD
 		]
     ElseIf $saveTroops = 1 Then ; Save Troops Style
         If $debugSetlog = 1 Then SetLog("List Deploy for Save Troops attacks", $COLOR_PURPLE)
 
+=======
+            ]
+    ElseIf $saveTroops = 1 Then ; Save Troops Style
+>>>>>>> a5cf4e04bd84e613132fc050a740318855d7a581
 	    Local $listInfoDeploy[11][5] = [[$eGiant, $nbSides, 1, 1, 2] _
 			, [$eBarb, $nbSides, 1, 2, 0] _
 			, [$eWall, $nbSides, 1, 1, 1] _
@@ -238,9 +268,15 @@ Func getDeploymentInfo($nbSides) ;Returns the Deployment array for LaunchTroops
 			, [$eMini, $nbSides, 1, 2, 0] _
 			, [$eGobl, $nbSides, 2, 2, 0] _
 			, ["HEROES", 1, 2, 1, 1] _
+<<<<<<< HEAD
 		]
    Else
         If $debugSetlog = 1 Then SetLog("List Deploy for Standard attacks", $COLOR_PURPLE)
+=======
+			]
+   Else
+        If $debugSetlog =1 Then SetLog("List Deploy for Standard attacks", $COLOR_PURPLE)
+>>>>>>> a5cf4e04bd84e613132fc050a740318855d7a581
 
         Local $listInfoDeploy[13][5] = [[$eGiant, $nbSides, 1, 1, 2] _
             , [$eBarb, $nbSides, 1, 2, 0] _
@@ -282,6 +318,7 @@ Func deployTroops($nbSides) ;This function is the branch point to new deployment
     ; $ListInfoDeploy = [Troop, No. of Sides, $WaveNb, $MaxWaveNb, $slotsPerEdge]
     Local $listInfoDeploy = getDeploymentInfo($nbSides)
 
+<<<<<<< HEAD
     Switch $iChkDeploySettings[$iMatchMode]
 		Case $eSmartSave
 			LaunchSaveTroops($listInfoDeploy, $CC, $King, $Queen, $Warden)
@@ -292,6 +329,13 @@ Func deployTroops($nbSides) ;This function is the branch point to new deployment
 		Case Else
 			LaunchStandard($listInfoDeploy, $CC, $King, $Queen, $Warden)
 	EndSwitch
+=======
+    If $iMatchMode = $LB And $iChkDeploySettings[$LB] >= 6 Then
+       LaunchSideAttackTroop($listInfoDeploy, $CC, $King, $Queen, $Warden)
+    Else
+       LaunchTroop2($listInfoDeploy, $CC, $King, $Queen, $Warden)
+    EndIf
+>>>>>>> a5cf4e04bd84e613132fc050a740318855d7a581
 EndFunc
 
 Func algorithm_AllTroops() ;Attack Algorithm for all existing troops

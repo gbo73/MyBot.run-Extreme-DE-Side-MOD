@@ -333,6 +333,8 @@ Global $ichkSmartLightSpell
 global $ichkTrainLightSpell
 Global $iDrills[4][4] = [[-1, -1, -1, -1], [-1, -1, -1, -1], [-1, -1, -1, -1], [-1, -1, -1, -1]] ; [LocX, LocY, BldgLvl, Quantity=filled by other functions]
 Global $smartZapGain = 0
+Global $iSnipeSprint = 0
+Global $iSnipeSprintCount = 0
 Global $NumLTSpellsUsed = 0
 Global $ichkDrillZapTH
 Global $itxtMinDark
@@ -891,6 +893,9 @@ Global $MyApiKey = ""
 Global $saveTroops = 0
 Global $countFindPixCloser = 0
 Global $countCollectorexposed = 0
+<<<<<<< HEAD
 
 ; Attack settings
 Global Enum $eOneSide, $eTwoSides, $eThreeSides, $eAllSides, $eSmartSave, $eFourFinger, $eDESide, $eTHSide
+=======
+>>>>>>> a5cf4e04bd84e613132fc050a740318855d7a581

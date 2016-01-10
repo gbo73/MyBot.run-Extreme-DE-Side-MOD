@@ -1,3 +1,19 @@
+<<<<<<< HEAD
+=======
+Func DropTroop3($troop, $nbSides, $number, $slotsPerEdge = 0, $indexToAttack = -1)
+	$nameFunc = "[DropTroop]"
+	debugRedArea($nameFunc & " IN ")
+	debugRedArea("troop : [" & $troop & "] / nbSides : [" & $nbSides & "] / number : [" & $number & "] / slotsPerEdge [" & $slotsPerEdge & "]")
+
+
+	DropOnEdges($troop, $nbSides, $number, $slotsPerEdge)
+
+
+	debugRedArea($nameFunc & " OUT ")
+
+EndFunc
+
+>>>>>>> a5cf4e04bd84e613132fc050a740318855d7a581
 Func DropTroop($troop, $nbSides, $number, $slotsPerEdge = 0, $indexToAttack = -1)
 	If isProblemAffect(True) Then Return
 
