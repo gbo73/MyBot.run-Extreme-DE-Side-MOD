@@ -1,7 +1,7 @@
 Func LiveRoyalFilter()
-		GetResources() ;Reads Resource Values ;waits until it can read army
+;		GetResources() ;Reads Resource Values ;waits until it can read army
 		$searchGold2 = 0
-		PrepareAttack(True)
+;		PrepareAttack(True)
 		$King = 0
 		$Queen = 0
 		If $LBHeroFilter = 1 Then
