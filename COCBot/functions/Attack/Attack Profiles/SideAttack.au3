@@ -96,7 +96,7 @@ Func LaunchSideAttack($listInfoDeploy, $CC, $King, $Queen, $Warden)
 							EndIf
 						Else
 							SetLog("Pixel Dropping " & $kind & " at " & $deployX & "," & $deployY)
-							dropUnit($deployX,$deployY,$kind,Ceiling($unitCount / $listInfoDeploy[$i][3])
+							dropUnit($deployX,$deployY,$kind,Ceiling($unitCount / $listInfoDeploy[$i][3]))
 						EndIf
 					EndIf
 			EndSwitch
