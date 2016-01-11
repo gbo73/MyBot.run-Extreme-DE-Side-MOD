@@ -453,3 +453,8 @@ EndFunc ;==> txtAPIKey
 EndIf
 IniWrite($config, "Stats", "chkCoCStats",$ichkCoCStats)
 EndFunc ;==> chkCoCStats
+
+Func cmbSniperTroop()
+	$iSniperTroop = _GUICtrlComboBox_GetCurSel($cmbSniperTroop)
+	setlog("$iSniperTroop = " & $iSniperTroop)
+EndFunc

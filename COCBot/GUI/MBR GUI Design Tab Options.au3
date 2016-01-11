@@ -114,6 +114,14 @@
 
   	$grpToolboxOptions = GUICtrlCreateGroup("Troop Deployment", $x, $y, 445, 275)
 
+	$txtTip = "When camps are cleared for a full train, what Tier 1 troop should be trained first for sniping?"
+    $lbltxtSniperTroop = GUICtrlCreateLabel("Troops used to snipe:", $x+5, $y+249, -1, -1)
+	GUICtrlSetTip(-1, $txtTip)
+    $cmbSniperTroop = GUICtrlCreateCombo("", $x + 115, $y+245, 120, 25, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
+	GUICtrlSetTip(-1, $txtTip)
+    GUICtrlSetData(-1, "Barbarians First|Archers First|Goblins First|Auto Balance","Auto Balance")
+    GUICtrlSetOnEvent(-1, "cmbSniperTroop")
+
 	$btnSave = GUICtrlCreateButton("Save", $x + 370, $y + 245, 60, 20 + 5)
 		GUICtrlSetOnEvent(-1, "btnSave")
 	$btnLoad = GUICtrlCreateButton("Load", $x + 300, $y + 245, 60, 20 + 5)

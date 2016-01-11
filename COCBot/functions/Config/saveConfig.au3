@@ -468,6 +468,7 @@ Func saveConfig() ;Saves the controls settings to the config
 	   IniWrite($config, "options", "DeDeployPosition" & $i,GUICtrlRead(Eval("txtDeStyle" & StringRight("0" & $i,2))))
     Next
 
+	IniWrite($config, "options", "cmbSniperTroop", _GUICtrlComboBox_GetCurSel($cmbSniperTroop) + 1)
 	;End Battle Settings------------------------------------------------------------------------
 	IniWrite($config, "endbattle", "txtTimeStopAtk", GUICtrlRead($txtTimeStopAtk))
 	IniWrite($config, "endbattle", "chkTimeStopAtk", GUICtrlRead($chkTimeStopAtk))
