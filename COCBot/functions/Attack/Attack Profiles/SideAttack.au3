@@ -2,7 +2,8 @@ Func LaunchSideAttack($listInfoDeploy, $CC, $King, $Queen, $Warden)
 	Local $listListInfoDeployTroopPixel[0]
 	Local $barPosition = -1, $earthquakeDropped = 0, $spellCount = 0, $unitCount = 0
 	Local $RandomEdge = $Edges[$BuildingEdge], $RandomXY = 2
-	Local $kind
+	Local $kind,$position,$spellPositionString,$positionside
+	Local $deployX,$deployY
 
 	If $debugSetlog = 1 Then SetLog("LaunchSideAttackTroop with CC " & $CC & ", K " & $King & ", Q " & $Queen & ", W " & $Warden , $COLOR_PURPLE)
 
@@ -12,36 +13,53 @@ Func LaunchSideAttack($listInfoDeploy, $CC, $King, $Queen, $Warden)
 
 	For $i = 0 To UBound($listInfoDeploy) - 1
 		$kind = $listInfoDeploy[$i][0]
+		$position = Number($listInfoDeploy[$i][4])
 		$barPosition = $aDeployButtonPositions[$kind]
+
+		If StringUpper(StringRight($listInfoDeploy[$i][4],1)) = "R" Then
+			$deployX = $RandomEdge[4][0]
+			$deployY = $RandomEdge[4][1]
+  		    $positionSide = "R"
+			$spellPositionString = String($position) & " distance from right corner"
+		ElseIf StringUpper(StringRight($listInfoDeploy[$i][4],1)) = "L" Then
+			$deployX = $RandomEdge[0][0]
+			$deployY = $RandomEdge[0][1]
+  		    $positionSide = "L"
+			$spellPositionString = String($position) & " distance from left corner"
+		Else
+			$deployX = $RandomEdge[$RandomXY][0]
+			$deployY = $RandomEdge[$RandomXY][1]
+			$spellPositionString = String($position) & " distance from middle"
+		EndIf
 
 		If $kind <> $DeDeployEmptyString And $barPosition <> -1 Then
 			Switch $kind
 				Case $eKing
 					If $LBBKEQFilter = 0 OR $earthquakeDropped = 1  Then
-						dropHeroes($RandomEdge[$RandomXY][0], $RandomEdge[$RandomXY][1], $King, -1, -1)
+						dropHeroes($deployX, $deployY, $King, -1, -1)
 					Else
 						SetLog("Saving king for earthquakes")
 					EndIf
 				Case $eQueen
-					dropHeroes($RandomEdge[$RandomXY][0], $RandomEdge[$RandomXY][1], -1, $Queen, -1)
+					dropHeroes($deployX,$deployY, -1, $Queen, -1)
 				Case $eWarden
-					dropHeroes($RandomEdge[$RandomXY][0], $RandomEdge[$RandomXY][1], -1, -1, $Warden)
+					dropHeroes($deployX,$deployY, -1, -1, $Warden)
 				Case $eCastle
-					dropCC($RandomEdge[$RandomXY][0], $RandomEdge[$RandomXY][1], $CC)
+					dropCC($deployX,$deployY, $CC)
 				Case $eRSpell, $eHSpell, $eJSpell, $eHaSpell, $eFSpell, $ePSpell
 					$spellCount = spellCount($kind)
 
 					If $spellCount > 0 Then
-						SetLog("Dropping spell " & getTranslatedTroopName($kind) & " at " & $listInfoDeploy[$i][4] & "% distance")
+						SetLog("Dropping spell " & getTranslatedTroopName($kind) & " at " & $spellPositionString)
 						If $BuildingLoc = 1 Then
 							;drop spell towards the DE storage
-							dropSpell(ceiling((((100-$listInfoDeploy[$i][4])*$RandomEdge[$RandomXY][0])+($listInfoDeploy[$i][4]*$BuildingLocx))/100), _
-									  ceiling((((100-$listInfoDeploy[$i][4])*$RandomEdge[$RandomXY][1])+($listInfoDeploy[$i][4]*$BuildingLocy))/100), _
+							dropSpell(ceiling((((100-$position)*$deployX)+($position*$BuildingLocx))/100), _
+									  ceiling((((100-$position)*$deployY)+($position*$BuildingLocy))/100), _
 									  $kind)
 						Else
 							;drop spell towards the center
-							dropSpell(ceiling((((100-$listInfoDeploy[$i][4])*$RandomEdge[$RandomXY][0])+($listInfoDeploy[$i][4]*430))/100), _
-									  ceiling((((100-$listInfoDeploy[$i][4])*$RandomEdge[$RandomXY][1])+($listInfoDeploy[$i][4]*313))/100), _
+							dropSpell(ceiling((((100-$position)*$deployX)+($position*430))/100), _
+									  ceiling((((100-$position)*$deployY)+($position*313))/100), _
 									  $kind)
 						EndIf
 					EndIf
@@ -50,17 +68,17 @@ Func LaunchSideAttack($listInfoDeploy, $CC, $King, $Queen, $Warden)
 					$spellCount = spellCount($kind)
 
 					If $spellCount >= 4 Then ;4 quakes or go home
-						SetLog("Dropping " & getTranslatedTroopName($kind) & " at " & $listInfoDeploy[$i][4] & "% distance")
+						SetLog("Dropping " & getTranslatedTroopName($kind) & " at " & $spellPositionString)
 
 						If $BuildingLoc = 1 Then
 							;drop spell towards the DE storage
-							dropEarth(ceiling((((100-$listInfoDeploy[$i][4])*$RandomEdge[$RandomXY][0])+($listInfoDeploy[$i][4]*$BuildingLocx))/100), _
-									  ceiling((((100-$listInfoDeploy[$i][4])*$RandomEdge[$RandomXY][1])+($listInfoDeploy[$i][4]*$BuildingLocy))/100), _
+							dropEarth(ceiling((((100-$position)*$deployX)+($position*$BuildingLocx))/100), _
+									  ceiling((((100-$position)*$deployY)+($position*$BuildingLocy))/100), _
 									  $kind)
 						Else
 							;drop spell towards the center
-							dropEarth(ceiling((((100-$listInfoDeploy[$i][4])*$RandomEdge[$RandomXY][0])+($listInfoDeploy[$i][4]*430))/100), _
-									  ceiling((((100-$listInfoDeploy[$i][4])*$RandomEdge[$RandomXY][1])+($listInfoDeploy[$i][4]*313))/100), _
+							dropEarth(ceiling((((100-$position)*$deployX)+($position*430))/100), _
+									  ceiling((((100-$position)*$deployY)+($position*313))/100), _
 									  $kind)
 						EndIf
 
@@ -71,13 +89,22 @@ Func LaunchSideAttack($listInfoDeploy, $CC, $King, $Queen, $Warden)
 					; $debugSetlog = 0
 				Case Else
 					$unitCount = unitCount($kind)
-
 					If $unitCount > 0 Then
-						If LaunchTroops($kind, $listInfoDeploy[$i][1], $listInfoDeploy[$i][2], $listInfoDeploy[$i][3], $listInfoDeploy[$i][4]) Then
-							If _Sleep(SetSleep(1)) Then Return
+						If $positionside <> "L" and $positionSide <> "R" Then
+							If LaunchTroops($kind, $listInfoDeploy[$i][1], $listInfoDeploy[$i][2], $listInfoDeploy[$i][3], $position) Then
+								If _Sleep(SetSleep(1)) Then Return
+							EndIf
+						Else
+							SetLog("Pixel Dropping " & $kind & " at " & $deployX & "," & $deployY)
+							dropUnit($deployX,$deployY,$kind,Ceiling($unitCount / $listInfoDeploy[$i][3])
 						EndIf
 					EndIf
 			EndSwitch
+		Else
+			If $position > 0 and $kind = $DeDeployEmptyString Then
+				SetLog("Waiting for " & $position & " seconds.")
+				If _Sleep(1000*$position) Then Return
+			EndIf
 		EndIf
 	Next
 
