@@ -460,6 +460,7 @@ Func saveConfig() ;Saves the controls settings to the config
 
 
     For $i = 1 to 24
+	   txtDeStyle($i)
 	   If GUICtrlRead(Eval("cmbDeDeploy" & StringRight("0" & $i,2))) <> $DeDeployEmptyString Then
 	      IniWrite($config, "options", "DeDeployType" & $i,_GUICtrlComboBox_GetCurSel(Eval("cmbDeDeploy" & StringRight("0" & $i,2)))-1)
 	   Else
