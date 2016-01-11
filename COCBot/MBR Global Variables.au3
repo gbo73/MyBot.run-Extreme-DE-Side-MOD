@@ -109,7 +109,7 @@ Global $sTemplates = @ScriptDir & "\Templates"
 Global $aTxtLogInitText[0][6] = [[]]
 
 Global $iMoveMouseOutBS = 0 ; If enabled moves mouse out of Android window when bot is running
-Global $DevMode = 1
+Global $DevMode = 0
 If FileExists(@ScriptDir & "\EnableMBRDebug.txt") Then $DevMode = 1
 
 ; Special Android Emulator variables

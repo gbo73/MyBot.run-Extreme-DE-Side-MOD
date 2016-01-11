@@ -1583,5 +1583,4 @@ Func applyConfig() ;Applies the data from config to the controls in GUI
 	GUICtrlSetData($txtAPIKey, $stxtAPIKey)
 	chkCoCStats()
 	txtAPIKey()
-
 EndFunc   ;==>applyConfig
