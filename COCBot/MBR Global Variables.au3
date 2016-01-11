@@ -335,6 +335,7 @@ Global $iDrills[4][4] = [[-1, -1, -1, -1], [-1, -1, -1, -1], [-1, -1, -1, -1], [
 Global $smartZapGain = 0
 Global $iSnipeSprint = 0
 Global $iSnipeSprintCount = 0
+Global $iSniperTroop = 0
 Global $NumLTSpellsUsed = 0
 Global $ichkDrillZapTH
 Global $itxtMinDark

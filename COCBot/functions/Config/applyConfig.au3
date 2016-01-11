@@ -659,6 +659,7 @@ Func applyConfig() ;Applies the data from config to the controls in GUI
 		 EndIf
    Next
 
+	_GUICtrlComboBox_SetCurSel($cmbSniperTroop, $iSniperTroop)
 	;End Battle Settings------------------------------------------------------------------------
 	GUICtrlSetData($txtTimeStopAtk, $sTimeStopAtk)
 	If $iChkTimeStopAtk = 1 Then

@@ -322,6 +322,9 @@ Func readConfig() ;Reads config and sets it to the variables
 		   $DeDeployPosition[$i-1] = IniRead($config, "options", "DeDeployPosition" & $I, "0")
 		Next
 
+
+		$iSniperTroop = IniRead($config, "options", "cmbSniperTroop", "5") -1
+
 	    ;End Battle Settings------------------------------------------------------------------------
 		$sTimeStopAtk = IniRead($config, "endbattle", "txtTimeStopAtk", "20")
 		$iChkTimeStopAtk = IniRead($config, "endbattle", "chkTimeStopAtk", "1")
