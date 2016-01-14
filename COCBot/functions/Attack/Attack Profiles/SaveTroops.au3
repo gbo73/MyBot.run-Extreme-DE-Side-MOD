@@ -63,7 +63,7 @@ Func LaunchSaveTroops($listInfoDeploy, $CC, $King, $Queen, $Warden)
 
 			$nbSides = 5
 
-			Local $listInfoDeploy[11][5] = [[$eGiant, $nbSides, 1, 1, 2] _
+			Local $FFListDeploy[11][5] = [[$eGiant, $nbSides, 1, 1, 2] _
 				, [$eBarb, $nbSides, 1, 1, 0] _
 				, [$eArch, $nbSides, 1, 1, 0] _
 				, [$eWall, $nbSides, 1, 1, 2] _
