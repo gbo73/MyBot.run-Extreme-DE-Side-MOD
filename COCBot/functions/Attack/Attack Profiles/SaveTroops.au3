@@ -63,15 +63,15 @@ Func LaunchSaveTroops($listInfoDeploy, $CC, $King, $Queen, $Warden)
 
 			$nbSides = 5
 
-			Local $FFListDeploy[11][5] = [[$eGiant, $nbSides, 1, 1, 1] _
+			Local $listInfoDeploy[11][5] = [[$eGiant, $nbSides, 1, 1, 2] _
 				, [$eBarb, $nbSides, 1, 1, 0] _
 				, [$eArch, $nbSides, 1, 1, 0] _
-				, [$eMini, $nbSides, 1, 1, 0] _
-				, [$eWall, $nbSides, 1, 1, 1] _
+				, [$eWall, $nbSides, 1, 1, 2] _
 				, [$eGobl, $nbSides, 1, 2, 0] _
 				, ["CC", 1, 1, 1, 1] _
-				, [$eHogs, $nbSides, 1, 1, 1] _
+				, [$eHogs, $nbSides, 1, 1, 2] _
 				, [$eWiza, $nbSides, 1, 1, 0] _
+				, [$eMini, $nbSides, 1, 1, 0] _
 				, [$eGobl, $nbSides, 2, 2, 0] _
 				, ["HEROES", 1, 2, 1, 1] _
 			]
@@ -130,7 +130,6 @@ Func LaunchSaveTroops($listInfoDeploy, $CC, $King, $Queen, $Warden)
 						If $numWave + 1 = 3 Then $waveName = "third"
 						If $numWave + 1 = 0 Then $waveName = "last"
 						SetLog("Dropping " & $waveName & " wave of " & $infoPixelDropTroop[5] & " " & $infoPixelDropTroop[4], $COLOR_GREEN)
-
 
 						DropOnPixel($infoPixelDropTroop[0], $infoPixelDropTroop[1], $infoPixelDropTroop[2], $infoPixelDropTroop[3])
 					EndIf
