@@ -17,7 +17,7 @@ Func Initiate()
 
 	If IsArray(ControlGetPos($Title, $AppPaneName, $AppClassInstance)) Then
 		;WinActivate($Title)
-		SetLog(_PadStringCenter(" " & $sBotTitle & " Powered by MyBot.run ", 50, "~"), $COLOR_PURPLE)
+		SetLog($sMODTitle, $COLOR_PURPLE)
 		SetLog($Compiled & " running on " & @OSVersion & " " & @OSServicePack & " " & @OSArch)
 		If Not $bSearchMode Then
 			SetLog(_PadStringCenter(" Bot Start ", 50, "="), $COLOR_GREEN)
@@ -45,14 +45,14 @@ Func Initiate()
 
 ;		$RunState = True
 		For $i = $FirstControlToHide To $LastControlToHide ; Save state of all controls on tabs
-			If $i = $tabGeneral Or $i = $tabSearch Or $i = $tabAttack Or $i = $tabAttackAdv Or $i = $tabDonate Or $i = $tabTroops Or $i = $tabMisc Or $i = $tabProfiles Or $i = $tabNotify Or $i = $tabUpgrades Or $i = $tabOptions Or $i = $tabEndBattle Or $i = $tabExpert Then ContinueLoop ; exclude tabs
+			If $i = $tabGeneral Or $i = $tabSearch Or $i = $tabAttack Or $i = $tabAttackAdv Or $i = $tabDonate Or $i = $tabTroops Or $i = $tabMisc Or $i = $tabProfiles Or $i = $tabNotify Or $i = $tabUpgrades Or $i = $tabOptions Or $i = $tabOthers Or $i = $tabEndBattle Or $i = $tabExpert Then ContinueLoop ; exclude tabs
 			If $pEnabled And $i = $btnDeletePBmessages Then ContinueLoop ; exclude the DeleteAllMesages button when PushBullet is enabled
 			If $i = $btnMakeScreenshot Then ContinueLoop ; exclude
 			If $i = $divider Then ContinueLoop ; exclude divider
 			$iPrevState[$i] = GUICtrlGetState($i)
 		Next
 		For $i = $FirstControlToHide To $LastControlToHide ; Disable all controls in 1 go on all tabs
-			If $i = $tabGeneral Or $i = $tabSearch Or $i = $tabAttack Or $i = $tabAttackAdv Or $i = $tabDonate Or $i = $tabTroops Or $i = $tabMisc Or $i = $tabProfiles Or $i = $tabNotify Or $i = $tabUpgrades Or $i = $tabOptions Or $i = $tabEndBattle Or $i = $tabExpert Then ContinueLoop ; exclude tabs Or $i = $tabOptions
+			If $i = $tabGeneral Or $i = $tabSearch Or $i = $tabAttack Or $i = $tabAttackAdv Or $i = $tabDonate Or $i = $tabTroops Or $i = $tabMisc Or $i = $tabProfiles Or $i = $tabNotify Or $i = $tabUpgrades Or $i = $tabOptions Or $i = $tabOthers Or $i = $tabEndBattle Or $i = $tabExpert Then ContinueLoop ; exclude tabs Or $i = $tabOptions
 			If $pEnabled And $i = $btnDeletePBmessages Then ContinueLoop ; exclude the DeleteAllMesages button when PushBullet is enabled
 			If $i = $btnMakeScreenshot Then ContinueLoop ; exclude
 			If $i = $divider Then ContinueLoop ; exclude divider
