@@ -19,50 +19,46 @@
     ;;; SIDE ATTACK
     ;;;;;;;;;;;;;;;;;
 	Local $x = 30, $y = 150
-	  $x = 30
-	  $y = 150
-	  $grpStatsMisc = GUICtrlCreateGroup("Smart Zap Drill", $x - 20, $y - 20, 445, 65)
-		 GUICtrlCreateIcon($pIconLib, $eIcnLightSpell, $x, $y, 24, 24)
-		 $chkSmartLightSpell = GUICtrlCreateCheckbox("Use Ligthning", $x +30, $y, -1, -1)
+	  $grpStatsMisc = GUICtrlCreateGroup("Smart Zap Drill", $x - 20, $y - 20, 175, 65)
+		 GUICtrlCreateIcon($pIconLib, $eIcnLightSpell, $x - 10, $y + 5, 24, 24)
+		 $chkSmartLightSpell = GUICtrlCreateCheckbox("Use Ligthning", $x + 20, $y - 5, -1, -1)
 			$txtTip = "Check this to drop lightning spells on DE drills"
 			GUICtrlSetTip(-1, $txtTip)
 			GUICtrlSetOnEvent(-1, "SmartLightSpell")
-		 $chkTrainLightSpell = GUICtrlCreateCheckbox("Auto train lighting spell", $x +30, $y +20, -1, -1)
+		 $chkTrainLightSpell = GUICtrlCreateCheckbox("Auto train lighting spell", $x + 20, $y + 20, -1, -1)
 			$txtTip = "Check this to always create spell lightning please set 0 lightnig spell on troops tab"
 			GUICtrlSetTip(-1, $txtTip)
-		$txtMinDark = GUICtrlCreateInput("1000", $x +120, $y, 35, 21, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
+		 $txtMinDark = GUICtrlCreateInput("1000", $x + 110, $y - 5, 35, 21, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
 			$txtTip = "Input The Min Dark Elixer You Want To Drill Zap"
 			GUICtrlSetTip(-1, $txtTip)
 			GUICtrlSetLimit(-1, 4)
 			GUICtrlSetOnEvent(-1, "txtMinDark")
-			    GUICtrlSetState(-1, $GUI_DISABLE)
+			GUICtrlSetState(-1, $GUI_DISABLE)
 
-	Local $x = 60, $y = 130
-
-	$grpStatuszap = GUICtrlCreateGroup("Status", $x + 220, $y +10, 170, 50)
-		$y += 5
-		$picSmartZap = GUICtrlCreateIcon($pIconLib, $eIcnDark, $x + 285, $y + 25, 21, 21)
-		$lblSmartZap = GUICtrlCreateLabel("0", $x+200, $y + 23, 80, 30, $SS_RIGHT)
-		GUICtrlSetFont(-1,12, $FW_BOLD,Default,"arial",$CLEARTYPE_QUALITY)
-		GUICtrlSetColor(-1,0x279B61)
+	Local $x = 190, $y = 150
+	  $grpStatuszap = GUICtrlCreateGroup("Status", $x, $y - 20, 130, 65)
+		$picSmartZap = GUICtrlCreateIcon($pIconLib, $eIcnDark, $x + 95, $y - 8, 21, 21)
+		$lblSmartZap = GUICtrlCreateLabel("0", $x + 10, $y - 5, 80, 30, $SS_RIGHT)
+		GUICtrlSetFont(-1, 12, $FW_BOLD, Default, "arial", $CLEARTYPE_QUALITY)
+		GUICtrlSetColor(-1, 0x279B61)
 		$txtTip = "The amount of Dark Elixir you zapped."
 	    GUICtrlSetTip(-1, $txtTip)
-		GUICtrlCreateIcon($pIconLib, $eIcnLightSpell, $x + 355, $y + 25, 21, 21)
-		$lblLightningUsed = GUICtrlCreateLabel("0", $x+290, $y + 23,60, 30, $SS_RIGHT)
-		GUICtrlSetFont(-1,12, $FW_BOLD,Default,"arial",$CLEARTYPE_QUALITY)
+		GUICtrlCreateIcon($pIconLib, $eIcnLightSpell, $x + 95, $y + 17, 21, 21)
+		$lblLightningUsed = GUICtrlCreateLabel("0", $x + 10, $y + 20, 80, 30, $SS_RIGHT)
+		GUICtrlSetFont(-1, 12, $FW_BOLD, Default, "arial", $CLEARTYPE_QUALITY)
 		GUICtrlSetColor(-1,0x279B61)
 		$txtTip = "The amount of Lightning Spells Used in zapping."
 	    GUICtrlSetTip(-1, $txtTip)
 
-   Local $x = 190, $y = 150
-	  $grpSaveTroops = GUICtrlCreateGroup("SaveTroop", $x, $y - 20, 90, 65)
-         $chkChangeFF = GUICtrlCreateCheckbox("Use FF", $x, $y -5, -1, -1)
-			$txtTip = "Change to FF Barch if less than % of collectors near RED LINE."
+   Local $x = 325, $y = 150
+	  $grpSaveTroops = GUICtrlCreateGroup("SaveTroop", $x, $y - 20, 130, 65)
+		$chkChangeFF = GUICtrlCreateCheckbox("Use Four Finger", $x + 10, $y - 5, -1, -1)
+			$txtTip = "Change to Four Finger if less than % of collectors near RED LINE."
 			GUICtrlSetTip(-1, $txtTip)
-		$txtTHpercentCollectors = GUICtrlCreateInput("80", $x, $y + 20, 35, 21, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
+		$txtTHpercentCollectors = GUICtrlCreateInput("80", $x + 10, $y + 17, 35, 21, BitOR($GUI_SS_DEFAULT_INPUT, $ES_CENTER, $ES_NUMBER))
 			GUICtrlSetTip(-1, $txtTip)
 			GUICtrlSetLimit(-1, 100)
-		$lblChangeFF = GUICtrlCreateLabel("% collec.", $x + 40, $y + 25, -1, -1)
+		$lblChangeFF = GUICtrlCreateLabel("% collectors.", $x + 50, $y + 20, -1, -1)
 		   	GUICtrlSetTip(-1, $txtTip)
 
     ;;;;;;;;;;;;;;;;;

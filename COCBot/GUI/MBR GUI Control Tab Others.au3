@@ -16,7 +16,7 @@
 ;MBR GUI_Others CONTROLS
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-Func SwitchADonate()
+Func SwitchAndDonate()
 	If GUICtrlRead($chkSwitchDonate) = $GUI_CHECKED Then
 	  $ichkSwitchDonate = 1
 	  Else
@@ -26,7 +26,7 @@ Func SwitchADonate()
 EndFunc
 
 
-Func MultyFarming()
+Func MultiFarming()
 	If GUICtrlRead($chkMultyFarming) = $GUI_CHECKED Then
 	  $ichkMultyFarming = 1
 	  Else
