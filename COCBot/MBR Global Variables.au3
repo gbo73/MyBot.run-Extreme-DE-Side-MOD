@@ -896,5 +896,9 @@ Global $saveTroops = 0
 Global $countFindPixCloser = 0
 Global $countCollectorexposed = 0
 
+;dual account
+Global $ichkSwitchDonate
+Global $ichkMultyFarming
+
 ; Attack settings
 Global Enum $eOneSide, $eTwoSides, $eThreeSides, $eAllSides, $eSmartSave, $eFourFinger, $eDESide, $eTHSide

@@ -325,6 +325,11 @@ Func readConfig() ;Reads config and sets it to the variables
 
 		$iSniperTroop = IniRead($config, "options", "cmbSniperTroop", "5") -1
 
+		 ;Others Settings--------------------------------------------------------------------------
+		 $ichkSwitchDonate = IniRead($config, "Others", "SwitchDonate", "0")
+		 $ichkMultyFarming = IniRead($config, "Others", "MultyFarming", "0")
+
+
 	    ;End Battle Settings------------------------------------------------------------------------
 		$sTimeStopAtk = IniRead($config, "endbattle", "txtTimeStopAtk", "20")
 		$iChkTimeStopAtk = IniRead($config, "endbattle", "chkTimeStopAtk", "1")
