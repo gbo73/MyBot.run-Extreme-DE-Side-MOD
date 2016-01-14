@@ -2,8 +2,8 @@ Func LaunchSideAttack($listInfoDeploy, $CC, $King, $Queen, $Warden)
 	Local $listListInfoDeployTroopPixel[0]
 	Local $barPosition = -1, $earthquakeDropped = 0, $spellCount = 0, $unitCount = 0
 	Local $RandomEdge = $Edges[$BuildingEdge], $RandomXY = 2
-	Local $kind,$position,$spellPositionString,$positionside
-	Local $deployX,$deployY
+	Local $kind, $position, $spellPositionString, $positionside
+	Local $deployX, $deployY
 
 	If $debugSetlog = 1 Then SetLog("LaunchSideAttackTroop with CC " & $CC & ", K " & $King & ", Q " & $Queen & ", W " & $Warden , $COLOR_PURPLE)
 
@@ -96,7 +96,7 @@ Func LaunchSideAttack($listInfoDeploy, $CC, $King, $Queen, $Warden)
 							EndIf
 						Else
 							SetLog("Pixel Dropping " & $kind & " at " & $deployX & "," & $deployY)
-							dropUnit($deployX,$deployY,$kind,Ceiling($unitCount / $listInfoDeploy[$i][3]))
+							dropUnit($deployX, $deployY, $kind, Ceiling($unitCount / $listInfoDeploy[$i][3]))
 						EndIf
 					EndIf
 			EndSwitch

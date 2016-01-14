@@ -11,9 +11,9 @@ Func LaunchSaveTroops($listInfoDeploy, $CC, $King, $Queen, $Warden)
 	Local $troopNb = 0
 	Local $name = ""
 
-	If $debugSetlog =1 Then SetLog("LaunchSideAttackTroop with CC " & $CC & ", K " & $King & ", Q " & $Queen & ", W " & $Warden , $COLOR_PURPLE)
+	If $debugSetlog =1 Then SetLog("LaunchSaveTroops with CC " & $CC & ", K " & $King & ", Q " & $Queen & ", W " & $Warden , $COLOR_PURPLE)
 
-	If ($iChkRedArea[$iMatchMode]) And $iChkDeploySettings[$iMatchMode] < $eFourFinger Then
+	If ($iChkRedArea[$iMatchMode]) Then
 		For $i = 0 To UBound($listInfoDeploy) - 1
 			$troopKind = $listInfoDeploy[$i][0]
 			$nbSides = $listInfoDeploy[$i][1]
@@ -391,27 +391,6 @@ Func LaunchSaveTroops($listInfoDeploy, $CC, $King, $Queen, $Warden)
 				Next
 			Next
 		EndIf
-	Else
-		For $i = 0 To UBound($listInfoDeploy) - 1
-			If (IsString($listInfoDeploy[$i][0]) And ($listInfoDeploy[$i][0] = "CC" Or $listInfoDeploy[$i][0] = "HEROES")) Then
-				If $iMatchMode = $LB And $iChkDeploySettings[$LB] >= 4 Then ; Used for DE or TH side attack
-					Local $RandomEdge = $Edges[$BuildingEdge]
-					Local $RandomXY = 2
-				Else
-					Local $RandomEdge = $Edges[Round(Random(0, 3))]
-					Local $RandomXY = Round(Random(0, 4))
-				EndIf
-				If ($listInfoDeploy[$i][0] = "CC") Then
-					dropCC($RandomEdge[$RandomXY][0], $RandomEdge[$RandomXY][1], $CC)
-				ElseIf ($listInfoDeploy[$i][0] = "HEROES") Then
-					dropHeroes($RandomEdge[$RandomXY][0], $RandomEdge[$RandomXY][1], $King, $Queen,$Warden)
-				EndIf
-			Else
-				If LaunchTroops($listInfoDeploy[$i][0], $listInfoDeploy[$i][1], $listInfoDeploy[$i][2], $listInfoDeploy[$i][3], $listInfoDeploy[$i][4]) Then
-					If _Sleep(SetSleep(1)) Then Return
-				EndIf
-			EndIf
-		Next
 	EndIf
 
 	Return True
