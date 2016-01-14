@@ -41,6 +41,9 @@ EndIf
 $sBotVersion = "v5.0.2" ;~ Don't add more here, but below. Version can't be longer than vX.y.z because it it also use on Checkversion()
 $sBotTitle = "My Bot " & $sBotVersion & " " & $DEFAULT_WIDTH & "x" & $DEFAULT_HEIGHT & " "
 
+$sMODVersion = "v1.0.7"
+$sMODTitle = "Extreme DE Side MOD " & $sMODVersion & " powered by My Bot " & $sBotVersion
+
 #include "COCBot\functions\Main Screen\Android.au3"
 
 If $CmdLine[0] < 2 Then
@@ -51,13 +54,13 @@ EndIf
 $sBotTitle = $sBotTitle & "(" & ($AndroidInstance <> "" ? $AndroidInstance : $Android) & ")"
 
 Local $cmdLineHelp = "Please specify as first command line parameter a different Profile (01-06). With second a different Android Emulator and with third an Android Instance. Supported Emulators are BlueStacks, BlueStacks2 and Droid4X. Only Droid4X supports running different instances at the same time."
-If _Singleton($sBotTitle, 1) = 0 Then
-	MsgBox(0, $sBotTitle, "Bot for " & $Android & ($AndroidInstance <> "" ? " (instance " & $AndroidInstance & ")" : "") & " is already running." & @CRLF & @CRLF & $cmdLineHelp)
+If _Singleton($sMODTitle, 1) = 0 Then
+	MsgBox(0, $sMODTitle, "Bot for " & $Android & ($AndroidInstance <> "" ? " (instance " & $AndroidInstance & ")" : "") & " is already running." & @CRLF & @CRLF & $cmdLineHelp)
 	Exit
 EndIf
 
 If _Singleton(StringReplace($sProfilePath & "\" & $sCurrProfile, "\", "-"), 1) = 0 Then
-	MsgBox(0, $sBotTitle, "Bot with Profile " & $sCurrProfile & " is already running in " & $sProfilePath & "\" & $sCurrProfile & "." & @CRLF & @CRLF & $cmdLineHelp)
+	MsgBox(0, $sMODTitle, "Bot with Profile " & $sCurrProfile & " is already running in " & $sProfilePath & "\" & $sCurrProfile & "." & @CRLF & @CRLF & $cmdLineHelp)
 	Exit
 EndIf
 
@@ -120,9 +123,9 @@ While 1
 ;			MsgBox(64 + $MB_APPLMODAL + $MB_TOPMOST, $sBotTitle, "Clash of Clans Bot" & @CRLF & @CRLF & _
 ;					"Version: " & $sBotVersion & @CRLF & _
 ;					"Released under the GNU GPLv3 license.", 0, $frmBot)
-			MsgBox(64 + $MB_APPLMODAL + $MB_TOPMOST, "Extreme DE Side MOD", "Extreme DE Side MOD" & @CRLF & _
-					"Version: 1.02" & @CRLF & @CRLF & _
-					"Modification of MyBot.run" & @CRLF & _
+			MsgBox(64 + $MB_APPLMODAL + $MB_TOPMOST, $sMODTitle, "Extreme DE Side MOD" & @CRLF & _
+					"Version: " & $sMODVersion & @CRLF & @CRLF & _
+					"Powered by MyBot.run" & @CRLF & _
 					"The original open source Clash of Clans Bot" & @CRLF & _
 					"Version: " & $sBotVersion & @CRLF & @CRLF & _
 					"Released under the GNU GPLv3 license.", 0, $frmBot)

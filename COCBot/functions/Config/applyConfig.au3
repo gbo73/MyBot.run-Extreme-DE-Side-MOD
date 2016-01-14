@@ -16,7 +16,7 @@
 
 Func applyConfig() ;Applies the data from config to the controls in GUI
 	;General Settings--------------------------------------------------------------------------
-	If $frmBotPosX <> -32000 Then WinMove2($sBotTitle, "", $frmBotPosX, $frmBotPosY)
+	If $frmBotPosX <> -32000 Then WinMove2($sMODTitle, "", $frmBotPosX, $frmBotPosY)
 
 	If $iVillageName = "" Then
 		GUICtrlSetData($txtVillageName, "MyVillage")

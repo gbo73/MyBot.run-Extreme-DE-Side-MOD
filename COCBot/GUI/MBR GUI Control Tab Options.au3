@@ -40,17 +40,17 @@ Func autoLightSpell()
 
 EndFunc
 
-
-  Func DrillZapTH()
+Func DrillZapTH()
     If GUICtrlRead($chkDrillZapTH) = 1 Then
 	  DEDropSmartSpell()
    ElseIf GUICtrlRead($chkDrillZapTH) = 0 Then
 	  Return False
    EndIf
 EndFunc
+
 Func txtMinDark()
-$itxtMinDark = GUICtrlRead($txtMinDark)
-IniWrite($config, "options", "txtMinDark", $itxtMinDark)
+	$itxtMinDark = GUICtrlRead($txtMinDark)
+	IniWrite($config, "options", "txtMinDark", $itxtMinDark)
 EndFunc
 
 Func cmbDeDeploy01()

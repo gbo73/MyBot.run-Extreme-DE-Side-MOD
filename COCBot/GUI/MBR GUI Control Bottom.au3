@@ -17,7 +17,7 @@ Func Initiate()
 
 	If IsArray(ControlGetPos($Title, $AppPaneName, $AppClassInstance)) Then
 		;WinActivate($Title)
-		SetLog(_PadStringCenter(" " & $sBotTitle & " Powered by MyBot.run ", 50, "~"), $COLOR_PURPLE)
+		SetLog($sMODTitle, $COLOR_PURPLE)
 		SetLog($Compiled & " running on " & @OSVersion & " " & @OSServicePack & " " & @OSArch)
 		If Not $bSearchMode Then
 			SetLog(_PadStringCenter(" Bot Start ", 50, "="), $COLOR_GREEN)

@@ -16,19 +16,19 @@
 	$tabOthers = GUICtrlCreateTabItem("Others")
 
 	;;;;;;;;;;;;;;;;;
-    ;;; Multy Farming
+    ;;; Mult-Farming
     ;;;;;;;;;;;;;;;;;
 	Local $x = 30, $y = 150
-	  $grpMultyFarming = GUICtrlCreateGroup("Multy Farming Mode", $x - 20, $y - 20, 220, 85)
-	  $chkSwitchDonate = GUICtrlCreateCheckbox("Switch Account And Donate", $x, $y, -1, -1)
-			$txtTip = "Will Switch  account and  Donate  Then Switchh back"
+	  $grpMultyFarming = GUICtrlCreateGroup("Multi-Farming Mode", $x - 20, $y - 20, 180, 65)
+		$chkSwitchDonate = GUICtrlCreateCheckbox("Switch Account and Donate", $x - 5, $y - 5, -1, -1)
+			$txtTip = "Will switch account and Donate, then switch back"
 			GUICtrlSetTip(-1, $txtTip)
-			GUICtrlSetOnEvent(-1, "SwitchADonate")
-   $y +=20
-	  $chkMultyFarming = GUICtrlCreateCheckbox("Multy Farming Mode", $x, $y, -1 , -1)
-			$txtTip = "Will Switch  account and  attack  Then Switch back"
+			GUICtrlSetOnEvent(-1, "SwitchAndDonate")
+	$y += 20
+		$chkMultyFarming = GUICtrlCreateCheckbox("Multi-Farming Mode", $x - 5, $y, -1 , -1)
+			$txtTip = "Will switch account and attack, then switch back"
 			GUICtrlSetTip(-1, $txtTip)
-			GUICtrlSetOnEvent(-1, "MultyFarming")
+			GUICtrlSetOnEvent(-1, "MultiFarming")
 
 GUICtrlCreateGroup("", -99, -99, 1, 1)
 

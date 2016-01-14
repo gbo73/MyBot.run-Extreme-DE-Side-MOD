@@ -62,6 +62,8 @@ Else
 	$Compiled = @ScriptName & " Script"
 EndIf
 
+Global $sMODVersion, $sMODTitle
+
 Global $hBitmap; Image for pixel functions
 Global $hHBitmap; Handle Image for pixel functions
 Global $hBitmapScreenshot; Image for screenshot functions

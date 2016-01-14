@@ -19,7 +19,7 @@ Func saveConfig() ;Saves the controls settings to the config
 
 	If $ichkExtraAlphabets = 1 Then	 FileOpen($config, $FO_UTF16_LE + $FO_OVERWRITE)
 
-	Local $frmBotPos = WinGetPos($sBotTitle)
+	Local $frmBotPos = WinGetPos($sMODTitle)
 
 	IniWrite($config, "general", "cmbProfile", _GUICtrlComboBox_GetCurSel($cmbProfile))
 	IniWrite($config, "general", "frmBotPosX", $frmBotPos[0])
