@@ -109,7 +109,7 @@ Global $sTemplates = @ScriptDir & "\Templates"
 Global $aTxtLogInitText[0][6] = [[]]
 
 Global $iMoveMouseOutBS = 0 ; If enabled moves mouse out of Android window when bot is running
-Global $DevMode = 1
+Global $DevMode = 0
 If FileExists(@ScriptDir & "\EnableMBRDebug.txt") Then $DevMode = 1
 
 ; Special Android Emulator variables
@@ -333,6 +333,9 @@ Global $ichkSmartLightSpell
 global $ichkTrainLightSpell
 Global $iDrills[4][4] = [[-1, -1, -1, -1], [-1, -1, -1, -1], [-1, -1, -1, -1], [-1, -1, -1, -1]] ; [LocX, LocY, BldgLvl, Quantity=filled by other functions]
 Global $smartZapGain = 0
+Global $iSnipeSprint = 0
+Global $iSnipeSprintCount = 0
+Global $iSniperTroop = 0
 Global $NumLTSpellsUsed = 0
 Global $ichkDrillZapTH
 Global $itxtMinDark
@@ -817,6 +820,7 @@ Global $tempSnipeWhileTrain[8] = [0, 0, 0, 0, 0, 0, 0, 0]
 Global $iChkSnipeWhileTrain = 0
 Global $itxtSearchlimit = 15
 Global $itxtminArmyCapacityTHSnipe = 35
+Global $itxtmaxArmyCapacityTHSnipe = 85
 Global $itxtSWTtiles = 1
 
 Global $iChkRestartSearchLimit  = 0
@@ -865,7 +869,7 @@ Global $ichkTrophySwitchMax, $itxtMaxTrophyAmount, $icmbTrophyMaxProfile, $ichkT
 ;Hero Healing Filter
 Global $LBsave[17], $LBHeroFilter, $LBAQFilter, $LBBKFilter, $iSkipCentreDE, $iSkipUndetectedDE, $DECorepix = 15
 Global $LBBKEQFilter
-Global 	$iCmbMeetGEHero, $iChkMeetDEHero, $iChkMeetTrophyHero, $iChkMeetTHHero, $iChkMeetTHOHero, $iChkWeakBaseHero, $iChkMeetOneHero, $iEnableAfterCountHero, $iMinGoldHero
+Global $iCmbMeetGEHero, $iChkMeetDEHero, $iChkMeetTrophyHero, $iChkMeetTHHero, $iChkMeetTHOHero, $iChkWeakBaseHero, $iChkMeetOneHero, $iEnableAfterCountHero, $iMinGoldHero
 Global $iMinElixirHero, $iMinGoldPlusElixirHero,$iMinDarkHero, $iMinTrophyHero, $iCmbTHHero, $iCmbWeakMortarHero, $iCmbWeakWizTowerHero, $iMaxTHHero
 Global $THString
 
@@ -886,3 +890,15 @@ Global $cmbTroopComp
 Global $ichkCoCStats = 0
 Global $stxtAPIKey = ""
 Global $MyApiKey = ""
+
+; savetroops
+Global $saveTroops = 0
+Global $countFindPixCloser = 0
+Global $countCollectorexposed = 0
+
+;dual account
+Global $ichkSwitchDonate
+Global $ichkMultyFarming
+
+; Attack settings
+Global Enum $eOneSide, $eTwoSides, $eThreeSides, $eAllSides, $eSmartSave, $eFourFinger, $eDESide, $eTHSide

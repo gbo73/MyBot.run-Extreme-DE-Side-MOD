@@ -588,6 +588,9 @@ Func applyConfig() ;Applies the data from config to the controls in GUI
 	GUICtrlSetData($txtUnBrkMaxDark, $iUnBrkMaxDark)
 	chkUnbreakable()
 
+	_GUICtrlComboBox_SetCurSel($cmbTSMeetGE, $iCmbMeetGE[$TS])
+	cmbTSMeetGE()
+
 	_GUICtrlComboBox_SetCurSel($cmbTsSearchMode, $iCmbTsSearchMode)
 	If $iChkMeetOne[$TS] = 1 Then
 		GUICtrlSetState($chkTsMeetOne, $GUI_CHECKED)
@@ -607,6 +610,7 @@ Func applyConfig() ;Applies the data from config to the controls in GUI
 	GUICtrlSetData($txtTSMinGoldPlusElixir, $iMinGoldPlusElixir[$TS])
 	GUICtrlSetData($txtTSMinDarkElixir, $iMinDark[$TS])
 
+	_GUICtrlComboBox_SetCurSel($cmbSnipeSprint, $iSnipeSprint)
 
     ;attk their king
 	;attk their queen
@@ -638,6 +642,14 @@ Func applyConfig() ;Applies the data from config to the controls in GUI
 	  GUICtrlSetState($chkDrillZapTH, $GUI_UNCHECKED)
    EndIf
 
+   If $useFFBarchST = 1 Then
+		GUICtrlSetState($chkChangeFF, $GUI_CHECKED)
+	Else
+		GUICtrlSetState($chkChangeFF, $GUI_UNCHECKED)
+	Endif
+
+	GUICtrlSetData($txtTHpercentCollectors, $percentCollectors)
+
    For $i = 1 to 24
 	  	GUICtrlSetData(Eval("txtDeStyle" & StringRight("0" & $i,2)), $DeDeployPosition[$i-1])
 		If $DeDeployType[$i-1] <> $DeDeployEmptyString Then
@@ -645,8 +657,23 @@ Func applyConfig() ;Applies the data from config to the controls in GUI
 		 Else
 			_GUICtrlComboBox_SetCurSel(Eval("cmbDeDeploy" & StringRight("0" & $i,2)), $DeDeployEmptyString)
 		 EndIf
-    Next
+   Next
 
+	_GUICtrlComboBox_SetCurSel($cmbSniperTroop, $iSniperTroop)
+
+	   ;Others Settings--------------------------------------------------------------------------
+
+	  If $ichkSwitchDonate = 1 Then
+		GUICtrlSetState($chkSwitchDonate, $GUI_CHECKED)
+	  Else
+		GUICtrlSetState($chkSwitchDonate, $GUI_UNCHECKED)
+	  EndIf
+
+	  If $ichkMultyFarming = 1 Then
+		GUICtrlSetState($chkMultyFarming, $GUI_CHECKED)
+	  Else
+		GUICtrlSetState($chkMultyFarming, $GUI_UNCHECKED)
+	  EndIf
 	;End Battle Settings------------------------------------------------------------------------
 	GUICtrlSetData($txtTimeStopAtk, $sTimeStopAtk)
 	If $iChkTimeStopAtk = 1 Then
@@ -1486,6 +1513,7 @@ Func applyConfig() ;Applies the data from config to the controls in GUI
 	EndIf
 	GUICtrlSetData($txtSearchlimit, $itxtSearchlimit)
 	GUICtrlSetData($txtminArmyCapacityTHSnipe, $itxtminArmyCapacityTHSnipe)
+	GUICtrlSetData($txtmaxArmyCapacityTHSnipe, $itxtmaxArmyCapacityTHSnipe)
 	GUICtrlSetData($txtSWTTiles, $itxtSWTtiles)
 	ChkSnipeWhileTrain()
 
@@ -1569,5 +1597,4 @@ Func applyConfig() ;Applies the data from config to the controls in GUI
 	GUICtrlSetData($txtAPIKey, $stxtAPIKey)
 	chkCoCStats()
 	txtAPIKey()
-
 EndFunc   ;==>applyConfig

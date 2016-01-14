@@ -141,7 +141,7 @@ Func runBot() ;Bot that runs everything in order
 		checkMainScreen()
 		If $Restart = True Then ContinueLoop
 
-		If $Is_ClientSyncError = False and $Is_SearchLimit=false Then
+		If $Is_ClientSyncError = False and $Is_SearchLimit=false and $iSnipeSprintCount = 0 Then
 			If BotCommand() Then btnStop()
 			If _Sleep($iDelayRunBot2) Then Return
 			checkMainScreen(False)
@@ -155,6 +155,7 @@ Func runBot() ;Bot that runs everything in order
 			If $RequestScreenshot = 1 Then PushMsg("RequestScreenshot")
 			If _Sleep($iDelayRunBot3) Then Return
 			VillageReport()
+			DetectAccount()
 			ProfileSwitch()
 			If $OutOfGold = 1 And ($iGoldCurrent >= $itxtRestartGold) Then ; check if enough gold to begin searching again
 				$OutOfGold = 0 ; reset out of gold flag
@@ -192,7 +193,8 @@ Func runBot() ;Bot that runs everything in order
 			If _Sleep($iDelayRunBot3) Then Return
 			If $Restart = True Then ContinueLoop
 			If $ichkTrainLightSpell = 1 Then
-                DrillZapSpell() ; Drill Zap
+			   SetLog("Auto Train Lighting Spell")
+				DrillZapSpell() ; Drill Zap
             EndIf
 			If _Sleep($iDelayRunBot1) Then Return
 			checkMainScreen(False) ; required here due to many possible exits
@@ -214,6 +216,10 @@ Func runBot() ;Bot that runs everything in order
 			BoostWarden()
 			If $Restart = True Then ContinueLoop
 			RequestCC()
+			If $ichkSwitchDonate = 1 Then
+			   SetLog("Change Account For Donate")
+			   SwitchDonate()
+			EndIf
 			If _Sleep($iDelayRunBot1) Then Return
 			checkMainScreen(False) ; required here due to many possible exits
 			If $Restart = True Then ContinueLoop
@@ -240,6 +246,10 @@ Func runBot() ;Bot that runs everything in order
 			SaveStatChkTownHall()
 			SaveStatChkDeadBase()
 			If $CommandStop <> 0 And $CommandStop <> 3 Then
+				if $iSnipeSprint > 0 And $OptTrophyMode = 1 Then
+					SetLog("Beginning snipe sprint")
+					$iSnipeSprintCount = 5 * $iSnipeSprint
+				EndIf
 				AttackMain()
 				If $OutOfGold = 1 Then
 					Setlog("Switching to Halt Attack, Stay Online/Collect mode ...", $COLOR_RED)
@@ -254,10 +264,16 @@ Func runBot() ;Bot that runs everything in order
 
 		Else ;When error occours directly goes to attack
 			If $Is_SearchLimit = False Then
-				SetLog("Restarted after Out of Sync Error: Attack Now", $COLOR_RED)
-;				$iNbrOfOoS += 1
-;				UpdateStats()
-;				PushMsg("OutOfSync")
+                If $iSnipeSprintCount>0 Then
+					UpdateStats()
+					SETLOG("Snipe sprints remaining: "& $iSnipeSprintCount)
+					$iSnipeSprintCount = $iSnipeSprintCount - 1
+				Else
+					SetLog("Restarted after Out of Sync Error: Attack Now", $COLOR_RED)
+;				    $iNbrOfOoS += 1
+;				    UpdateStats()
+;				    PushMsg("OutOfSync")
+				EndIf
 			Else
 				If $debugsetlog = 1 Then Setlog("return from searchLimit, restart searches (" & $CurCamp & "/" & $TotalCamp &")",$COLOR_PURPLE)
 				;OPEN ARMY OVERVIEW WITH NEW BUTTON
@@ -299,7 +315,22 @@ Func runBot() ;Bot that runs everything in order
 			EndIf
 			If _Sleep($iDelayRunBot5) Then Return
 			If $Restart = True Then ContinueLoop
-		EndIf
+		 EndIf
+			If $ichkMultyFarming = 1 Then
+			   SetLog("Multy Farming Mode Activated", $COLOR_Green)
+			   If $iVillageName = "Main" Then
+				  SwitchSecond()
+				  _GUICtrlComboBox_SetCurSel($cmbProfile, 1)
+				  cmbProfile()
+				  $RunState = True
+				  $fullArmy = True
+			   ElseIf $iVillageName = "Second" Then
+				  SwitchMain()
+				  _GUICtrlComboBox_SetCurSel($cmbProfile, 0)
+				  cmbProfile()
+				  $RunState = True
+			   EndIf
+			EndIf
 	WEnd
 EndFunc   ;==>runBot
 
