@@ -114,7 +114,7 @@ Func ReturnHome($TakeSS = 1, $GoldChangeCheck = True) ;Return main screen
 
 	If _Sleep($iDelayReturnHome2) Then Return ; short wait for return
 
-	TrayTip($sBotTitle, "", BitOR($TIP_ICONASTERISK, $TIP_NOSOUND)) ; clear village search match found message
+	TrayTip($sMODTitle, "", BitOR($TIP_ICONASTERISK, $TIP_NOSOUND)) ; clear village search match found message
 
 	If $GoldChangeCheck = True Then
 		$counter = 0
