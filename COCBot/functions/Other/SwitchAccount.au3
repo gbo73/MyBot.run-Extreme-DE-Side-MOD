@@ -70,11 +70,12 @@ Func LoadMain() ;Load Main Account
 			   Click(512, 433) ;Click Load Button
 			   Sleep (1000)
 
-			Local $Message =  _PixelSearch(470, 249 + $bottomOffsetY, 478, 255 + $bottomOffsetY, Hex(0xE8E8E0, 6), 0)
+			Local $Message =  _PixelSearch(470, 249 + $midOffsetY, 478, 255 + $midOffsetY, Hex(0xE8E8E0, 6), 0)
 				  If IsArray($Message) Then
 					 Click(521, 198) ;Click Confirm
+					 Sleep (1500)
 					 Click(339, 215) ;Click Confirm txtbox
-					 SetLog("Insert CONFIRM To Text Box ", $COLOR_blue)
+				  SetLog("Insert CONFIRM To Text Box ", $COLOR_blue)
 					 Sleep (1000)
 					 ControlSend($Title, "", "", "{LSHIFT DOWN}{C DOWN}{C UP}{O DOWN}{O UP}{N DOWN}{N UP}{F DOWN}{F UP}{I DOWN}{I UP}{R DOWN}{R UP}{M DOWN}{M UP}{LSHIFT UP}")  ;Enter  Confirm  txt
 					 Sleep (1000)
@@ -168,8 +169,9 @@ Func LoadSecond() ; Load Second Account
 			   Sleep (1000)
 
 			Local $Message =  _PixelSearch(470, 249 + $midOffsetY, 478, 255 + $midOffsetY, Hex(0xE8E8E0, 6), 0)
-				  If IsArray ($Message) Then
+				  If IsArray($Message) Then
 					 Click(521, 198) ;Click Confirm
+					 Sleep (1500)
 					 Click(339, 215) ;Click Confirm txtbox
 				  SetLog("Insert CONFIRM To Text Box ", $COLOR_blue)
 					 Sleep (1000)
