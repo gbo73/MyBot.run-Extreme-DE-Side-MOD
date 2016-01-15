@@ -14,8 +14,8 @@ Func CoCStats($starsearned)
 If $ichkCoCStats = 0 Then Return
 
 ; ==================== Begin CoCStats Mod ====================
-   SetLog("Sending attack report to CoCStats.com...", $COLOR_BLUE)
-   $sPD = 'apikey=' & $MyApiKey & '&ctrophy=' & $iTrophyCurrent & '&cgold=' & $iGoldCurrent & '&celix=' & $iElixirCurrent & '&cdelix=' & $iDarkCurrent & '&search=' & $SearchCount & '&gold=' & $iGoldLast & '&elix=' & $iElixirLast & '&delix=' & $iDarkLast & '&trophy=' & $iTrophyLast & '&bgold=' & $iGoldLastBonus & '&belix=' & $iElixirLastBonus & '&bdelix=' & $iDarkLastBonus & '&stars=' & $starsearned & '&thlevel=' & $iTownHallLevel & '&log='
+   SetLog("Sending attack report to mbstats.fontismedia.com...", $COLOR_BLUE)
+   $sPD = 'apikey=' & $MyApiKey & '&ctrophy=' & $iTrophyCurrent & '&cgold=' & $iGoldCurrent & '&celix=' & $iElixirCurrent & '&cdelix=' & $iDarkCurrent & '&search=' & $SearchCount & '&gold=' & $iGoldLast & '&elix=' & $iElixirLast & '&delix=' & $iDarkLast & '&trophy=' & $iTrophyLast & '&bgold=' & $iGoldLastBonus & '&belix=' & $iElixirLastBonus & '&bdelix=' & $iDarkLastBonus & '&stars=' & $starsearned & '&thlevel=' & $iTownHallLevel & '&village=' &  $iVillageName &  '&log='
 
    $tempLogText = _GuiCtrlRichEdit_GetText($txtLog, True)
    For $i = 1 To StringLen($tempLogText)
@@ -33,7 +33,7 @@ If $ichkCoCStats = 0 Then Return
    Next
 
    $oHTTP = ObjCreate("winhttp.winhttprequest.5.1")
-   $oHTTP.Open("POST", "https://cocstats.com/api/log.php", False)
+   $oHTTP.Open("POST", "http://mbstats.fontismedia.com/api/log.php", False)
    $oHTTP.SetRequestHeader("Content-Type", "application/x-www-form-urlencoded")
 
    $oHTTP.Send($sPD)
