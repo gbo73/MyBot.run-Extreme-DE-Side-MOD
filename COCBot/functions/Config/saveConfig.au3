@@ -469,6 +469,20 @@ Func saveConfig() ;Saves the controls settings to the config
     Next
 
 	IniWrite($config, "options", "cmbSniperTroop", _GUICtrlComboBox_GetCurSel($cmbSniperTroop) + 1)
+
+	  ;Others Settings--------------------------------------------------------------------------
+		 If GUICtrlRead($chkSwitchDonate) = $GUI_CHECKED Then
+			IniWrite($config, "Others", "SwitchDonate", 1)
+		 Else
+			IniWrite($config, "Others", "SwitchDonate", 0)
+		 EndIf
+
+		 If GUICtrlRead($chkMultyFarming) = $GUI_CHECKED Then
+			IniWrite($config, "Others", "MultyFarming", 1)
+		 Else
+			IniWrite($config, "Others", "MultyFarming", 0)
+		 EndIf
+
 	;End Battle Settings------------------------------------------------------------------------
 	IniWrite($config, "endbattle", "txtTimeStopAtk", GUICtrlRead($txtTimeStopAtk))
 	IniWrite($config, "endbattle", "chkTimeStopAtk", GUICtrlRead($chkTimeStopAtk))

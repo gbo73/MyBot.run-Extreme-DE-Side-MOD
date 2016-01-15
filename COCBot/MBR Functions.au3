@@ -144,6 +144,9 @@
 #include "functions\Other\SettingSwitch.au3"
 #include "functions\Other\ProfileSwitch.au3"
 #include "functions\Other\CoCStats.com.au3"
+#include "functions\Other\SwitchAccount.au3"
+#include "functions\Other\DetectAccount.au3"
+#include "functions\Other\SwitchDonate.au3"
 
 #include "functions\Pixels\_CaptureRegion.au3"
 #include "functions\Pixels\_ColorCheck.au3"

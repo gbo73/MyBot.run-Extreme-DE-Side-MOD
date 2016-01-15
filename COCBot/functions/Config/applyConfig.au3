@@ -660,6 +660,20 @@ Func applyConfig() ;Applies the data from config to the controls in GUI
    Next
 
 	_GUICtrlComboBox_SetCurSel($cmbSniperTroop, $iSniperTroop)
+
+	   ;Others Settings--------------------------------------------------------------------------
+
+	  If $ichkSwitchDonate = 1 Then
+		GUICtrlSetState($chkSwitchDonate, $GUI_CHECKED)
+	  Else
+		GUICtrlSetState($chkSwitchDonate, $GUI_UNCHECKED)
+	  EndIf
+
+	  If $ichkMultyFarming = 1 Then
+		GUICtrlSetState($chkMultyFarming, $GUI_CHECKED)
+	  Else
+		GUICtrlSetState($chkMultyFarming, $GUI_UNCHECKED)
+	  EndIf
 	;End Battle Settings------------------------------------------------------------------------
 	GUICtrlSetData($txtTimeStopAtk, $sTimeStopAtk)
 	If $iChkTimeStopAtk = 1 Then
