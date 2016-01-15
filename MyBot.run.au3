@@ -158,7 +158,9 @@ Func runBot() ;Bot that runs everything in order
 			If $RequestScreenshot = 1 Then PushMsg("RequestScreenshot")
 			If _Sleep($iDelayRunBot3) Then Return
 			VillageReport()
-			DetectAccount()
+			If $ichkMultyFarming = 1 Then
+			   DetectAccount()
+			EndIf
 			ProfileSwitch()
 			If $OutOfGold = 1 And ($iGoldCurrent >= $itxtRestartGold) Then ; check if enough gold to begin searching again
 				$OutOfGold = 0 ; reset out of gold flag
