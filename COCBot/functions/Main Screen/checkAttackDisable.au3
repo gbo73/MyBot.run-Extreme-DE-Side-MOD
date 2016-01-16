@@ -62,8 +62,8 @@ Func checkAttackDisable($iSource, $Result = "")
 				If StringInStr($Result, "been") <> 0 Or StringInStr($Result, "after") <> 0 Or StringInStr($Result, "have") <> 0 Then ; verify we have right text string, 'after' added for Personal Break
 					Setlog("Online too long, Take-A-Break detected. Exiting CoC", $COLOR_RED)
 					checkMainScreen()
-				 ElseIf $ichkMultyFarming = 1 Then
-					SetLog("Change Account for Take-A-Break detected", $COLOR_MAROON)
+					If $ichkMultyFarming = 1 Then
+						SetLog("Change Account for Take-A-Break detected", $COLOR_MAROON)
 					    If GUICtrlRead($account) = "Main" Then
 						   SwitchSecond()
 						   $RunState = True
@@ -72,6 +72,7 @@ Func checkAttackDisable($iSource, $Result = "")
 						   SwitchMain()
 						   $RunState = True
 						   Return False
+						EndIf
 					EndIf
 				Else
 					If $debugSetlog = 1 Then Setlog("wrong text string", $COLOR_PURPLE)
