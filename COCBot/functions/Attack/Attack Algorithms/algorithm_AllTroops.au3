@@ -183,9 +183,9 @@ Func getNumberOfSides() ;Returns the number of sides to attack from
     Return $nbSides
 EndFunc
 
-Func getDeploymentInfo($nbSides) ;Returns the Deployment array for LaunchTroops
+Func getDeploymentInfo($nbSides, $overrideMode = -1) ;Returns the Deployment array for LaunchTroops
     ; $ListInfoDeploy = [Troop, No. of Sides, $WaveNb, $MaxWaveNb, $slotsPerEdge]
-    If $iMatchMode = $LB And ($iChkDeploySettings[$LB] = $eDESide Or $iChkDeploySettings[$LB] = $eTHSide) Then ; Customized side wave deployment here for DE and TH side
+    If ($iMatchMode = $LB And ($iChkDeploySettings[$LB] = $eDESide Or $iChkDeploySettings[$LB] = $eTHSide) And $overrideMode = -1) Or ($overrideMode = $eDESide Or $overrideMode = $eTHSide) Then ; Customized side wave deployment here for DE and TH side
         If $debugSetlog = 1 Then SetLog("List Deploy for Customized Side attack", $COLOR_PURPLE)
 
         Local $listInfoDeploy[24][5]
@@ -209,7 +209,7 @@ Func getDeploymentInfo($nbSides) ;Returns the Deployment array for LaunchTroops
             $listInfoDeploy[$i][3] = $waveCount
             $listInfoDeploy[$i][4] = $DeDeployPosition[$i]
         Next
-    ElseIf $iChkDeploySettings[$iMatchMode] = $eFourFinger Then ;Four Finger deployment
+    ElseIf ($iChkDeploySettings[$iMatchMode] = $eFourFinger And $overrideMode = -1) Or $overrideMode = $eFourFinger Then ;Four Finger deployment
         If $debugSetlog = 1 Then SetLog("ListDeploy for Four Finger attack", $COLOR_PURPLE)
 
         Local $listInfoDeploy[11][5] = [[$eGiant, $nbSides, 1, 1, 2] _
@@ -224,7 +224,7 @@ Func getDeploymentInfo($nbSides) ;Returns the Deployment array for LaunchTroops
             , [$eGobl, $nbSides, 2, 2, 0] _
             , ["HEROES", 1, 2, 1, 1] _
 		]
-    ElseIf $saveTroops = 1 Then ; Save Troops Style
+    ElseIf ($saveTroops = 1  And $overrideMode = -1) Or $overrideMode = $eSmartSave Then ; Save Troops Style
         If $debugSetlog = 1 Then SetLog("List Deploy for Save Troops attacks", $COLOR_PURPLE)
 
 	    Local $listInfoDeploy[11][5] = [[$eGiant, $nbSides, 1, 1, 2] _
@@ -261,14 +261,14 @@ Func getDeploymentInfo($nbSides) ;Returns the Deployment array for LaunchTroops
     Return $listInfoDeploy
 EndFunc
 
-Func dropRemainingTroops($nbSides) ;Uses any left over troops
+Func dropRemainingTroops($nbSides, $overrideSmartDeploy = -1) ;Uses any left over troops
     SetLog("Dropping left over troops", $COLOR_BLUE)
 
     For $x = 0 To 1
         PrepareAttack($iMatchMode, True) ;Check remaining quantities
         For $i = $eBarb To $eLava ; lauch all remaining troops
             ;If $i = $eBarb Or $i = $eArch Then
-            LaunchTroops($i, $nbSides, 0, 1)
+            LaunchTroops($i, $nbSides, 0, 1, 0, $overrideSmartDeploy)
             CheckHeroesHealth()
             ;Else
             ;     LaunchTroops($i, $nbSides, 0, 1, 2)
@@ -310,11 +310,11 @@ Func algorithm_AllTroops() ;Attack Algorithm for all existing troops
 
     If $nbSides = 0 Then Return; No sides set, so lets just quit
 
-    If ($iChkRedArea[$iMatchMode]) And $iChkDeploySettings[$iMatchMode] < 5 Then
+    If ($iChkRedArea[$iMatchMode]) And $iChkDeploySettings[$iMatchMode] < $eFourFinger Then
         useSmartDeploy()
-    ElseIf NOT $iChkRedArea[$iMatchMode] And $iChkDeploySettings[$iMatchMode] = 6 Then ;DE Side - Live Base only ~~~~~~~~~~~~~~~~
+    ElseIf NOT $iChkRedArea[$iMatchMode] And $iChkDeploySettings[$iMatchMode] = $eDESide Then ;DE Side - Live Base only ~~~~~~~~~~~~~~~~
         GetBuildingEdge($eSideBuildingDES) ; Get DE Storage side when Redline is not used.
-    ElseIf NOT $iChkRedArea[$iMatchMode] And $iChkDeploySettings[$iMatchMode] = 7 Then ;TH Side - Live Base only ~~~~~~~~~~~~~~~~
+    ElseIf NOT $iChkRedArea[$iMatchMode] And $iChkDeploySettings[$iMatchMode] = $eTHSide Then ;TH Side - Live Base only ~~~~~~~~~~~~~~~~
         GetBuildingEdge($eSideBuildingTH) ; Get Townhall side when Redline is not used.
     EndIf
 

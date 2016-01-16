@@ -1,4 +1,4 @@
-Func LaunchFourFinger($listInfoDeploy, $CC, $King, $Queen, $Warden)
+Func LaunchFourFinger($listInfoDeploy, $CC, $King, $Queen, $Warden, $overrideSmartDeploy = -1)
 	Local $RandomEdge, $RandomXY
 
 	If $debugSetlog = 1 Then SetLog("Launch Four Finger with CC " & $CC & ", K " & $King & ", Q " & $Queen & ", W " & $Warden , $COLOR_PURPLE)
@@ -14,7 +14,7 @@ Func LaunchFourFinger($listInfoDeploy, $CC, $King, $Queen, $Warden)
 				dropHeroes($RandomEdge[$RandomXY][0], $RandomEdge[$RandomXY][1], $King, $Queen, $Warden)
 			EndIf
 		Else
-			If LaunchTroops($listInfoDeploy[$i][0], $listInfoDeploy[$i][1], $listInfoDeploy[$i][2], $listInfoDeploy[$i][3], $listInfoDeploy[$i][4]) Then
+			If LaunchTroops($listInfoDeploy[$i][0], $listInfoDeploy[$i][1], $listInfoDeploy[$i][2], $listInfoDeploy[$i][3], $listInfoDeploy[$i][4], $overrideSmartDeploy) Then
 				If _Sleep(SetSleep(1)) Then Return
 			EndIf
 		EndIf

@@ -1,4 +1,4 @@
-Func LaunchSaveTroops($listInfoDeploy, $CC, $King, $Queen, $Warden)
+Func LaunchSaveTroops($listInfoDeploy, $CC, $King, $Queen, $Warden, $overrideSmartDeploy = -1)
 	Local $listListInfoDeployTroopPixel[0]
 
 	$countFindPixCloser = 0
@@ -11,7 +11,7 @@ Func LaunchSaveTroops($listInfoDeploy, $CC, $King, $Queen, $Warden)
 	Local $troopNb = 0
 	Local $name = ""
 
-	If $debugSetlog =1 Then SetLog("LaunchSaveTroops with CC " & $CC & ", K " & $King & ", Q " & $Queen & ", W " & $Warden , $COLOR_PURPLE)
+	If $debugSetlog = 1 Then SetLog("LaunchSaveTroops with CC " & $CC & ", K " & $King & ", Q " & $Queen & ", W " & $Warden , $COLOR_PURPLE)
 
 	If ($iChkRedArea[$iMatchMode]) Then
 		For $i = 0 To UBound($listInfoDeploy) - 1
@@ -55,7 +55,7 @@ Func LaunchSaveTroops($listInfoDeploy, $CC, $King, $Queen, $Warden)
 
 		If $saveTroops = 1 And $useFFBarchST = 1 And ($countCollectorexposed / Ubound($PixelNearCollector) * 100) < $percentCollectors Then
 			Setlog("There are " & $countCollectorexposed & " collector(s) near RED LINE out of " & Ubound($PixelNearCollector) & " collectors")
-			SetLog("Change the Attack Strategy to Four Finger Barch!...")
+			SetLog("Change the Attack Strategy to Four Finger...")
 
 			$endbattle = False
 
@@ -63,35 +63,9 @@ Func LaunchSaveTroops($listInfoDeploy, $CC, $King, $Queen, $Warden)
 
 			$nbSides = 5
 
-			Local $FFListDeploy[11][5] = [[$eGiant, $nbSides, 1, 1, 2] _
-				, [$eBarb, $nbSides, 1, 1, 0] _
-				, [$eArch, $nbSides, 1, 1, 0] _
-				, [$eWall, $nbSides, 1, 1, 2] _
-				, [$eGobl, $nbSides, 1, 2, 0] _
-				, ["CC", 1, 1, 1, 1] _
-				, [$eHogs, $nbSides, 1, 1, 2] _
-				, [$eWiza, $nbSides, 1, 1, 0] _
-				, [$eMini, $nbSides, 1, 1, 0] _
-				, [$eGobl, $nbSides, 2, 2, 0] _
-				, ["HEROES", 1, 2, 1, 1] _
-			]
+			Local $FFListDeploy = getDeploymentInfo($nbSides, $eFourFinger)
 
-			For $i = 0 To UBound($FFListDeploy) - 1
-				If (IsString($FFListDeploy[$i][0]) And ($FFListDeploy[$i][0] = "CC" Or $FFListDeploy[$i][0] = "HEROES")) Then
-					Local $RandomEdge = $Edges[Round(Random(0, 3))]
-					Local $RandomXY = Round(Random(0, 4))
-
-					If ($FFListDeploy[$i][0] = "CC") Then
-						dropCC($RandomEdge[$RandomXY][0], $RandomEdge[$RandomXY][1], $CC)
-					ElseIf ($FFListDeploy[$i][0] = "HEROES") Then
-						dropHeroes($RandomEdge[$RandomXY][0], $RandomEdge[$RandomXY][1], $King, $Queen)
-					EndIf
-				Else
-					If LaunchTroops($FFListDeploy[$i][0], $FFListDeploy[$i][1], $FFListDeploy[$i][2], $FFListDeploy[$i][3], $FFListDeploy[$i][4]) Then
-						If _Sleep(SetSleep(1)) Then Return
-					EndIf
-				EndIf
-			Next
+			LaunchFourFinger($FFListDeploy, $CC, $King, $Queen, $Warden, 1)
 
 			Return True
 		Endif
@@ -125,12 +99,8 @@ Func LaunchSaveTroops($listInfoDeploy, $CC, $King, $Queen, $Warden)
 						If _Sleep($iDelayLaunchTroop21) Then Return
 						SelectDropTroop($infoPixelDropTroop[0]) ;Select Troop
 						If _Sleep($iDelayLaunchTroop21) Then Return
-						Local $waveName = "first"
-						If $numWave + 1 = 2 Then $waveName = "second"
-						If $numWave + 1 = 3 Then $waveName = "third"
-						If $numWave + 1 = 0 Then $waveName = "last"
-						SetLog("Dropping " & $waveName & " wave of " & $infoPixelDropTroop[5] & " " & $infoPixelDropTroop[4], $COLOR_GREEN)
 
+						SetLog("Dropping " & getWaveName($numWave) & " wave of " & $infoPixelDropTroop[5] & " " & $infoPixelDropTroop[4], $COLOR_GREEN)
 						DropOnPixel($infoPixelDropTroop[0], $infoPixelDropTroop[1], $infoPixelDropTroop[2], $infoPixelDropTroop[3])
 					EndIf
 					If ($isHeroesDropped) Then
@@ -382,8 +352,8 @@ Func LaunchSaveTroops($listInfoDeploy, $CC, $King, $Queen, $Warden)
 							If _Sleep($iDelayLaunchTroop21) Then Return
 							SelectDropTroop($infoPixelDropTroop[0]) ;Select Troop
 							If _Sleep($iDelayLaunchTroop23) Then Return
-							SetLog("Dropping last " & $numberLeft & "  of " & $infoPixelDropTroop[5], $COLOR_GREEN)
 
+							SetLog("Dropping last " & $numberLeft & "  of " & $infoPixelDropTroop[5], $COLOR_GREEN)
 							DropOnPixel($infoPixelDropTroop[0], $infoPixelDropTroop[1], Ceiling($numberLeft / UBound($infoPixelDropTroop[1])), $infoPixelDropTroop[3])
 						EndIf
 					EndIf

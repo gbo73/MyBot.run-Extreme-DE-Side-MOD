@@ -1,4 +1,4 @@
-Func LaunchSideAttack($listInfoDeploy, $CC, $King, $Queen, $Warden)
+Func LaunchSideAttack($listInfoDeploy, $CC, $King, $Queen, $Warden, $overrideSmartDeploy = -1)
 	Local $listListInfoDeployTroopPixel[0]
 	Local $barPosition = -1, $earthquakeDropped = 0, $spellCount = 0, $unitCount = 0
 	Local $RandomEdge = $Edges[$BuildingEdge], $RandomXY = 2
@@ -91,7 +91,7 @@ Func LaunchSideAttack($listInfoDeploy, $CC, $King, $Queen, $Warden)
 					$unitCount = unitCount($kind)
 					If $unitCount > 0 Then
 						If $positionside <> "L" and $positionSide <> "R" Then
-							If LaunchTroops($kind, $listInfoDeploy[$i][1], $listInfoDeploy[$i][2], $listInfoDeploy[$i][3], $position) Then
+							If LaunchTroops($kind, $listInfoDeploy[$i][1], $listInfoDeploy[$i][2], $listInfoDeploy[$i][3], $position, $overrideSmartDeploy) Then
 								If _Sleep(SetSleep(1)) Then Return
 							EndIf
 						Else
