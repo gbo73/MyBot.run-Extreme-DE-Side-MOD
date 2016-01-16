@@ -21,7 +21,7 @@ Func getWaveName($numWave = 1, $maxWave = -1)
 	Return $waveName
 EndFunc   ;==>getWaveName
 
-Func LaunchTroops($kind, $nbSides, $waveNb, $maxWaveNb, $slotsPerEdge = 0)
+Func LaunchTroops($kind, $nbSides, $waveNb, $maxWaveNb, $slotsPerEdge = 0, $overrideSmartDeploy = -1)
 	Local $troop = unitLocation($kind)
 	Local $troopNb = Ceiling(unitCount($kind) / $maxWaveNb)
 	Local $name = getTranslatedTroopName($kind)
@@ -31,12 +31,12 @@ Func LaunchTroops($kind, $nbSides, $waveNb, $maxWaveNb, $slotsPerEdge = 0)
 	EndIf
 
 	SetLog("Dropping " & getWaveName($waveNb, $maxWaveNb) & " wave of " & $troopNb & " " & $name, $COLOR_GREEN)
-	DropTroop($troop, $nbSides, $troopNb, $slotsPerEdge)
+	DropTroop($troop, $nbSides, $troopNb, $slotsPerEdge, -1, $overrideSmartDeploy)
 
 	Return True
 EndFunc   ;==>LaunchTroops
 
-Func LaunchStandard($listInfoDeploy, $CC, $King, $Queen, $Warden)
+Func LaunchStandard($listInfoDeploy, $CC, $King, $Queen, $Warden, $overrideSmartDeploy = -1)
 	Local $listListInfoDeployTroopPixel[0]
 
 	Local $isCCDropped = False
@@ -153,7 +153,7 @@ Func LaunchStandard($listInfoDeploy, $CC, $King, $Queen, $Warden)
 									If Ubound($PixelRedArea) > 0 Then
 										Local $pixelRandomDrop = $PixelRedArea[Random(0, UBound($PixelRedArea) - 1, 1)]
 									Else
-										Local $pixelRandomDrop = [747,367] ;
+										Local $pixelRandomDrop = [747, 367] ;
 									EndIf
 
 									If ($isCCDropped = False And $infoTroopListArrPixel[0] = "CC") Then
@@ -216,7 +216,7 @@ Func LaunchStandard($listInfoDeploy, $CC, $King, $Queen, $Warden)
 					dropHeroes($RandomEdge[$RandomXY][0], $RandomEdge[$RandomXY][1], $King, $Queen,$Warden)
 				EndIf
 			Else
-				If LaunchTroops($listInfoDeploy[$i][0], $listInfoDeploy[$i][1], $listInfoDeploy[$i][2], $listInfoDeploy[$i][3], $listInfoDeploy[$i][4]) Then
+				If LaunchTroops($listInfoDeploy[$i][0], $listInfoDeploy[$i][1], $listInfoDeploy[$i][2], $listInfoDeploy[$i][3], $listInfoDeploy[$i][4], $overrideSmartDeploy) Then
 					If _Sleep(SetSleep(1)) Then Return
 				EndIf
 			EndIf

@@ -60,8 +60,6 @@
 #include "functions\Attack\Troops\DropOnEdges.au3"
 #include "functions\Attack\Troops\IdentifyTroopKind.au3"
 ;#include "functions\Attack\Troops\LauchTroop.au3"
-;#include "functions\Attack\Troops\LaunchSaveTroop.au3"
-;#include "functions\Attack\Troops\LaunchSideAttackTroop.au3"
 #include "functions\Attack\Troops\NameOfTroop.au3"
 #include "functions\Attack\Troops\OldDropTroop.au3"
 #include "functions\Attack\Troops\ReadTroopQuantity.au3"
