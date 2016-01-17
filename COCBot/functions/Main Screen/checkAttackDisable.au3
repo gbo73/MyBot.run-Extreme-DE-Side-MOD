@@ -33,17 +33,22 @@ Func checkAttackDisable($iSource, $Result = "")
 					Setlog("Attacking disabled, Take-A-Break detected. Exiting CoC", $COLOR_MAROON)
 					If _CheckPixel($aSurrenderButton, $bCapturePixel) Then ; village search requires end battle 1s, so check for surrender/endbattle button
 						ReturnHome(False, False) ;If End battle is available
-				ElseIf $ichkMultyFarming = 1 Then
-						SetLog("Change Account for Take-A-Break detected", $COLOR_MAROON)
-						If GUICtrlRead($account) = "Main" Then
-						   SwitchSecond()
-						   $RunState = True
-						   $fullArmy = True
-						ElseIf GUICtrlRead($account) = "Second" Then
-						   SwitchMain()
-						   $RunState = True
+						If $ichkMultyFarming = 1 Then
+						   SetLog("Multy Farming Mode Activated", $COLOR_Green)
+						   If $iVillageName = "Main" Then
+							  SwitchSecond()
+							  _GUICtrlComboBox_SetCurSel($cmbProfile, 1)
+							  cmbProfile()
+							  $RunState = True
+							  $fullArmy = True
+						   ElseIf $iVillageName = "Second" Then
+							  SwitchMain()
+							  _GUICtrlComboBox_SetCurSel($cmbProfile, 0)
+							  cmbProfile()
+							  $RunState = True
+						   EndIf
 						EndIf
-					 Else
+					Else
 						CloseCoC()
 					EndIf
 				Else
