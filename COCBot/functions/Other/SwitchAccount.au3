@@ -27,6 +27,7 @@ Func SwitchMain()
 		waitMainScreen()
 		ExitLoop
 	WEnd
+
 	$RunState = True
 	FileDelete((@ScriptDir & "\images\Main.bmp"))
 	DetectAccount()
@@ -34,26 +35,19 @@ Func SwitchMain()
 EndFunc   ;==>SwitchMain
 
 Func SelectMain()
-
 	Click(437, 399 + $midOffsetY) ;Click  Disconn
 	Sleep(1000)
 	Click(437, 399 + $midOffsetY) ;Click  Connect
 
 	While 1
 		Local $Message = _PixelSearch(164, 45 + $midOffsetY, 166, 281 + $midOffsetY, Hex(0x689F38, 6), 0)
+
 		If IsArray($Message) Then
 			SetLog("Main account selected", $COLOR_blue)
 			Click($Message[0], $Message[1] + 63 + $midOffsetY) ;Select Main account
-			ExitLoop
-		EndIf
-	WEnd
-	Sleep(1000)
-	While 1
-
-		Local $Message = _PixelSearch(544, 338 + $midOffsetY, 584, 515 + $midOffsetY, Hex(0x0C0C0C, 6), 0)
-		If IsArray($Message) Then
+			Sleep(2000)
 			SetLog("Click OK", $COLOR_blue)
-			Click($Message[0], $Message[1]) ;Click OK
+			Click(462, 492)
 			ExitLoop
 		EndIf
 	WEnd
@@ -97,7 +91,6 @@ EndFunc   ;==>LoadMain
 
 ;;;;;;;##### Second Account#####;;;;;;;
 Func SwitchSecond()
-
 	waitMainScreen()
 	Send("{CapsLock off}")
 	Click(830, 590) ;Click Switch
@@ -114,17 +107,14 @@ Func SwitchSecond()
 	$RunState = True
 	FileDelete((@ScriptDir & "\images\Second.bmp"))
 	DetectAccount()
-
 EndFunc   ;==>SwitchSecond
 
 
 
 Func SelectSecond()
-
 	Click(437, 399 + $midOffsetY) ;Click  Disconn
 	Sleep(1000)
 	Click(437, 399 + $midOffsetY) ;Click  Connect
-
 
 	While 1
 		Local $Message = _PixelSearch(164, 45 + $midOffsetY, 166, 281 + $midOffsetY, Hex(0x689F38, 6), 0)
@@ -132,23 +122,14 @@ Func SelectSecond()
 			SetLog("Second Account Selected", $COLOR_blue)
 			Sleep(1000)
 			Click($Message[0], $Message[1] + 112 + $midOffsetY) ;Select Second account
-			ExitLoop
-		EndIf
-
-	WEnd
-	Sleep(1000)
-	While 1
-
-		Local $Message = _PixelSearch(544, 338 + $midOffsetY, 584, 515 + $midOffsetY, Hex(0x0C0C0C, 6), 0)
-		If IsArray($Message) Then
+			Sleep(2000)
 			SetLog("Click OK", $COLOR_blue)
-			Sleep(1000)
-			Click($Message[0], $Message[1]) ;Click OK
+			Click(462, 492)
 			ExitLoop
-
 		EndIf
 
 	WEnd
+
 EndFunc   ;==>SelectSecond
 
 

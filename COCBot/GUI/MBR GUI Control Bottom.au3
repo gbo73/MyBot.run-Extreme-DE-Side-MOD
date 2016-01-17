@@ -5,13 +5,53 @@
 ; Parameters ....: None
 ; Return values .: None
 ; Author ........: GkevinOD (2014)
-; Modified ......: Hervidero (2015), KnowJack(July 2015)
+; Modified ......: Hervidero (2015), KnowJack(July 2015), LunaEclipse(January 2016)
 ; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......:
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
 ; Example .......: No
 ; ===============================================================================================================================
+
+; Simple API trick to hide the task bar icons, windows of type Tool Window don't display an icon.
+Func hideTaskBarIcon($windowHandle)
+	; Capture Existing Style
+	$Style = _WinAPI_GetWindowLong($windowHandle, $GWL_STYLE)
+
+	; You must hide the window before changing the style, as per Microsoft's instructions here
+	; https://msdn.microsoft.com/en-us/library/windows/desktop/cc144179%28v=vs.85%29.aspx#Managing_Taskbar_But
+	WinSetState($windowHandle, "", @SW_HIDE)
+	; Check if window is type $WS_EX_APPWINDOW, and if it is remove it
+	If BitAND($Style, $WS_EX_APPWINDOW) = $WS_EX_APPWINDOW Then
+		_WinAPI_SetWindowLong($windowHandle, $GWL_STYLE, BitXOR($Style, $WS_EX_APPWINDOW))
+	EndIf
+	; Check if window is type not currently type $WS_EX_TOOLWINDOW, and if it isn't add it
+	If BitAND($Style, $WS_EX_TOOLWINDOW) <> $WS_EX_TOOLWINDOW Then
+		_WinAPI_SetWindowLong($windowHandle, $GWL_STYLE, BitOr($Style, $WS_EX_TOOLWINDOW))
+	EndIf
+	; Reshow the window so the changes take effect, this is required
+	WinSetState($windowHandle, "", @SW_SHOW)
+EndFunc
+
+; Simple API trick to show the task bar icon again, change back to type App Window.
+Func showTaskBarIcon($hWnd)
+	; Capture Existing Style
+	$Style = _WinAPI_GetWindowLong($HWnD, $GWL_STYLE)
+
+	; You must hide the window before changing the style, as per Microsoft's instructions here
+	; https://msdn.microsoft.com/en-us/library/windows/desktop/cc144179%28v=vs.85%29.aspx#Managing_Taskbar_But
+	WinSetState($HWnD, "", @SW_HIDE)
+	; Check if window is type $WS_EX_TOOLWINDOW, and if it is remove it
+	If BitAND($Style, $WS_EX_TOOLWINDOW) = $WS_EX_TOOLWINDOW Then
+		_WinAPI_SetWindowLong($HWnD, $GWL_STYLE, BitXOR($Style, $WS_EX_TOOLWINDOW))
+	EndIf
+	; Check if window is type not currently type $WS_EX_APPWINDOW, and if it isn't add it
+	If BitAND($Style, $WS_EX_APPWINDOW) <> $WS_EX_APPWINDOW Then
+		_WinAPI_SetWindowLong($HWnD, $GWL_STYLE, BitOr($Style, $WS_EX_APPWINDOW))
+	EndIf
+	; Reshow the window so the changes take effect, this is required
+	WinSetState($HWnD, "", @SW_SHOW)
+EndFunc
 
 Func Initiate()
 
@@ -316,10 +356,14 @@ Func btnHide()
 		$botPos[0] = WinGetPos($Title)[0]
 		$botPos[1] = WinGetPos($Title)[1]
 		WinMove2($Title, "", -32000, -32000)
+		; Hide the taskbar icon now as Bluestacks has been moved off the screen
+		hideTaskBarIcon($HWnD)
+
 		$Hide = True
 	Else
 		GUICtrlSetData($btnHide, GetTranslated(13,11, "Hide"))
-
+		; Show the taskbar icon now while Bluestack is still off the screen
+		showTaskBarIcon($HWnD)
 		If $botPos[0] = -32000 Then
 			WinMove2($Title, "", 0, 0)
 		Else
