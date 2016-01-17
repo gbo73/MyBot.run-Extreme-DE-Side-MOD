@@ -902,5 +902,8 @@ Global $countCollectorexposed = 0
 Global $ichkSwitchDonate
 Global $ichkMultyFarming
 
+; Hide Taskbar settings
+Global $ichkHideTaskBar
+
 ; Attack settings
 Global Enum $eOneSide, $eTwoSides, $eThreeSides, $eAllSides, $eSmartSave, $eFourFinger, $eDESide, $eTHSide
