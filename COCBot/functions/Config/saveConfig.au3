@@ -17,7 +17,7 @@
 Func saveConfig() ;Saves the controls settings to the config
 	;General Settings--------------------------------------------------------------------------
 
-	If $ichkExtraAlphabets = 1 Then	 FileOpen($config, $FO_UTF16_LE + $FO_OVERWRITE)
+	If $ichkExtraAlphabets = 1 Then FileOpen($config, $FO_UTF16_LE + $FO_OVERWRITE)
 
 	Local $frmBotPos = WinGetPos($sMODTitle)
 
@@ -127,7 +127,7 @@ Func saveConfig() ;Saves the controls settings to the config
 	IniWrite($config, "search", "DBWeakMortar", _GUICtrlComboBox_GetCurSel($cmbDBWeakMortar))
 	IniWrite($config, "search", "DBWeakWizTower", _GUICtrlComboBox_GetCurSel($cmbDBWeakWizTower))
 
-;Hero Filters
+	;Hero Filters
 	IniWrite($config, "search", "SkipCentreDE", _GUICtrlComboBox_GetCurSel($cmbSkipCentreDE))
 	IniWrite($config, "search", "SkipUndetectedDE", _GUICtrlComboBox_GetCurSel($cmbSkipUndetectedDE))
 
@@ -341,7 +341,7 @@ Func saveConfig() ;Saves the controls settings to the config
 		IniWrite($config, "attack", "ABSmartAttackDarkElixirDrill", 1)
 	Else
 		IniWrite($config, "attack", "ABSmartAttackDarkElixirDrill", 0)
-	 EndIf
+	EndIf
 
 	If GUICtrlRead($chkDBKingAttack) = $GUI_CHECKED Then
 		IniWrite($config, "attack", "DBKingAtk", 1)
@@ -426,28 +426,28 @@ Func saveConfig() ;Saves the controls settings to the config
 	EndIf
 
 
-	  ;Options Settings--------------------------------------------------------------------------
+	;Options Settings--------------------------------------------------------------------------
 
-		;ichkSmartLightSpell DE Smart Lightning Zap
+	;ichkSmartLightSpell DE Smart Lightning Zap
 	If GUICtrlRead($chkSmartLightSpell) = $GUI_CHECKED Then
 		IniWrite($config, "options", "SmartLightSpell", "1")
 	Else
 		IniWrite($config, "options", "SmartLightSpell", "0")
-	 EndIf
-	 If GUICtrlRead($chkTrainLightSpell) = $GUI_CHECKED Then
+	EndIf
+	If GUICtrlRead($chkTrainLightSpell) = $GUI_CHECKED Then
 		IniWrite($config, "options", "TrainLightSpell", "1")
 	Else
 		IniWrite($config, "options", "TrainLightSpell", "0")
-	 EndIf
+	EndIf
 
 
-	 IniWrite($config, "options", "txtMinDark", GUICtrlRead($txtMinDark))
+	IniWrite($config, "options", "txtMinDark", GUICtrlRead($txtMinDark))
 
-	If GUICtrlRead($chkDrillZapTH)= $GUI_CHECKED Then
-       IniWrite($config, "options", "chkDrillZapTH", "1")
-    Else
-       IniWrite($config, "options", "chkDrillZapTH", "0")
-    EndIf
+	If GUICtrlRead($chkDrillZapTH) = $GUI_CHECKED Then
+		IniWrite($config, "options", "chkDrillZapTH", "1")
+	Else
+		IniWrite($config, "options", "chkDrillZapTH", "0")
+	EndIf
 
 	;save troops option
 	If GUICtrlRead($chkChangeFF) = $GUI_CHECKED Then
@@ -459,29 +459,35 @@ Func saveConfig() ;Saves the controls settings to the config
 	IniWrite($config, "options", "txtTHpercentCollectors", GUICtrlRead($txtTHpercentCollectors))
 
 
-    For $i = 1 to 24
-	   If GUICtrlRead(Eval("cmbDeDeploy" & StringRight("0" & $i,2))) <> $DeDeployEmptyString Then
-	      IniWrite($config, "options", "DeDeployType" & $i,_GUICtrlComboBox_GetCurSel(Eval("cmbDeDeploy" & StringRight("0" & $i,2)))-1)
-	   Else
-		  IniWrite($config, "options", "DeDeployType" & $i,$DeDeployEmptyString)
-	   EndIf
-	   IniWrite($config, "options", "DeDeployPosition" & $i,GUICtrlRead(Eval("txtDeStyle" & StringRight("0" & $i,2))))
-    Next
+	For $i = 1 To 24
+		If GUICtrlRead(Eval("cmbDeDeploy" & StringRight("0" & $i, 2))) <> $DeDeployEmptyString Then
+			IniWrite($config, "options", "DeDeployType" & $i, _GUICtrlComboBox_GetCurSel(Eval("cmbDeDeploy" & StringRight("0" & $i, 2))) - 1)
+		Else
+			IniWrite($config, "options", "DeDeployType" & $i, $DeDeployEmptyString)
+		EndIf
+		IniWrite($config, "options", "DeDeployPosition" & $i, GUICtrlRead(Eval("txtDeStyle" & StringRight("0" & $i, 2))))
+	Next
 
 	IniWrite($config, "options", "cmbSniperTroop", _GUICtrlComboBox_GetCurSel($cmbSniperTroop) + 1)
 
-	  ;Others Settings--------------------------------------------------------------------------
-		 If GUICtrlRead($chkSwitchDonate) = $GUI_CHECKED Then
-			IniWrite($config, "Others", "SwitchDonate", 1)
-		 Else
-			IniWrite($config, "Others", "SwitchDonate", 0)
-		 EndIf
+	;Others Settings--------------------------------------------------------------------------
+	If GUICtrlRead($chkSwitchDonate) = $GUI_CHECKED Then
+		IniWrite($config, "Others", "SwitchDonate", 1)
+	Else
+		IniWrite($config, "Others", "SwitchDonate", 0)
+	EndIf
 
-		 If GUICtrlRead($chkMultyFarming) = $GUI_CHECKED Then
-			IniWrite($config, "Others", "MultyFarming", 1)
-		 Else
-			IniWrite($config, "Others", "MultyFarming", 0)
-		 EndIf
+	If GUICtrlRead($chkMultyFarming) = $GUI_CHECKED Then
+		IniWrite($config, "Others", "MultyFarming", 1)
+	Else
+		IniWrite($config, "Others", "MultyFarming", 0)
+	EndIf
+
+	If GUICtrlRead($chkHideTaskBar) = $GUI_CHECKED Then
+		IniWrite($config, "Others", "HideTaskBarIcon", 1)
+	Else
+		IniWrite($config, "Others", "HideTaskBarIcon", 0)
+	EndIf
 
 	;End Battle Settings------------------------------------------------------------------------
 	IniWrite($config, "endbattle", "txtTimeStopAtk", GUICtrlRead($txtTimeStopAtk))
@@ -677,7 +683,7 @@ Func saveConfig() ;Saves the controls settings to the config
 	IniWrite($config, "advanced", "TSsearchGoldPlusElixir", GUICtrlRead($txtTSMinGoldPlusElixir))
 	IniWrite($config, "advanced", "TSsearchDark", GUICtrlRead($txtTSMinDarkElixir))
 
-    IniWrite($config, "advanced", "cmbSnipeSprint", _GUICtrlComboBox_GetCurSel($cmbSnipeSprint))
+	IniWrite($config, "advanced", "cmbSnipeSprint", _GUICtrlComboBox_GetCurSel($cmbSnipeSprint))
 	;atk their king
 	;attk their queen
 
@@ -981,7 +987,7 @@ Func saveConfig() ;Saves the controls settings to the config
 	;barracks boost not saved (no use)
 
 	; Spells Creation  ---------------------------------------------------------------------
-    IniWrite($config, "Spells", "LightningSpell", GUICtrlRead($txtNumLightningSpell))
+	IniWrite($config, "Spells", "LightningSpell", GUICtrlRead($txtNumLightningSpell))
 	IniWrite($config, "Spells", "RageSpell", GUICtrlRead($txtNumRageSpell))
 	IniWrite($config, "Spells", "HealSpell", GUICtrlRead($txtNumHealSpell))
 	IniWrite($config, "Spells", "PoisonSpell", GUICtrlRead($txtNumPoisonSpell))
@@ -1015,9 +1021,9 @@ Func saveConfig() ;Saves the controls settings to the config
 	IniWrite($config, "other", "minwallgold", GUICtrlRead($txtWallMinGold))
 	IniWrite($config, "other", "minwallelixir", GUICtrlRead($txtWallMinElixir))
 
-	IniWrite($config, "other", "minrestartgold", GUICtrlRead($txtRestartGold ))
+	IniWrite($config, "other", "minrestartgold", GUICtrlRead($txtRestartGold))
 	IniWrite($config, "other", "minrestartelixir", GUICtrlRead($txtRestartElixir))
-	IniWrite($config, "other", "minrestartdark", GUICtrlRead($txtRestartDark ))
+	IniWrite($config, "other", "minrestartdark", GUICtrlRead($txtRestartDark))
 
 
 	If GUICtrlRead($chkTrap) = $GUI_CHECKED Then
@@ -1062,7 +1068,7 @@ Func saveConfig() ;Saves the controls settings to the config
 	IniWrite($config, "upgrade", "upgradetroopname", _GUICtrlComboBox_GetCurSel($cmbLaboratory))
 	IniWrite($building, "upgrade", "LabPosX", $aLabPos[0])
 	IniWrite($building, "upgrade", "LabPosY", $aLabPos[1])
-;Heroes upgrade
+	;Heroes upgrade
 	If GUICtrlRead($chkUpgradeKing) = $GUI_CHECKED Then
 		IniWrite($config, "upgrade", "UpgradeKing", "1")
 	Else
@@ -1161,7 +1167,7 @@ Func saveConfig() ;Saves the controls settings to the config
 	Else
 		IniWrite($config, "pushbullet", "PBEnabled", 0)
 	EndIf
-         If GUICtrlRead($chkPBenabled2) = $GUI_CHECKED Then
+	If GUICtrlRead($chkPBenabled2) = $GUI_CHECKED Then
 		IniWrite($config, "pushbullet", "PBEnabled2", 1)
 	Else
 		IniWrite($config, "pushbullet", "PBEnabled2", 0)
@@ -1264,9 +1270,9 @@ Func saveConfig() ;Saves the controls settings to the config
 		IniWrite($config, "planned", "DropCCEnable", 1)
 	Else
 		IniWrite($config, "planned", "DropCCEnable", 0)
-	 EndIf
+	EndIf
 
-   If GUICtrlRead($chkBoostBarracksHours) = $GUI_CHECKED Then
+	If GUICtrlRead($chkBoostBarracksHours) = $GUI_CHECKED Then
 		IniWrite($config, "planned", "BoostBarracksHoursEnable", 1)
 	Else
 		IniWrite($config, "planned", "BoostBarracksHoursEnable", 0)
@@ -1419,7 +1425,7 @@ Func saveConfig() ;Saves the controls settings to the config
 
 	IniWrite($config, "other", "language", $sLanguage)
 
-	If $ichkExtraAlphabets = 1 Then	FileClose($config)
+	If $ichkExtraAlphabets = 1 Then FileClose($config)
 
 	SaveStatChkTownHall() ;call function save stats
 	SaveStatChkDeadBase() ;call function save stats
