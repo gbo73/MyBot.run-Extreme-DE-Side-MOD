@@ -38,7 +38,7 @@ Func ReplayShare($last = 1)
 		If _ColorCheck(_GetPixelColor(500, 156 + $midOffsetY), Hex(0x78D4E8, 6), 6) = True And Not (IsArray($FileListQueueName)) Then
 			;button replay blue, moved down 30 for 860x780
 			Setlog("Ok, sharing!")
-			Click(500, 156 + $midOffsetY,1,0,"#0238") ; Click Share Button, moved down 30 for 860x780
+			Click(500, 165 + $midOffsetY,1,0,"#0238") ; Click Share Button, moved down 30 for 860x780
 			If _Sleep($iDelayReplayShare1) Then Return
 			Click(300, 120,1,0,"#0239") ;Select text for write comment
 			If _Sleep($iDelayReplayShare1) Then Return

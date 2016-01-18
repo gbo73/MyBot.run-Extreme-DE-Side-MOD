@@ -33,6 +33,21 @@ Func checkAttackDisable($iSource, $Result = "")
 					Setlog("Attacking disabled, Take-A-Break detected. Exiting CoC", $COLOR_MAROON)
 					If _CheckPixel($aSurrenderButton, $bCapturePixel) Then ; village search requires end battle 1s, so check for surrender/endbattle button
 						ReturnHome(False, False) ;If End battle is available
+						If $ichkMultyFarming = 1 Then
+						   SetLog("Multy Farming Mode Activated", $COLOR_Green)
+						   If $iVillageName = "Main" Then
+							  SwitchSecond()
+							  _GUICtrlComboBox_SetCurSel($cmbProfile, 1)
+							  cmbProfile()
+							  $RunState = True
+							  $fullArmy = True
+						   ElseIf $iVillageName = "Second" Then
+							  SwitchMain()
+							  _GUICtrlComboBox_SetCurSel($cmbProfile, 0)
+							  cmbProfile()
+							  $RunState = True
+						   EndIf
+						EndIf
 					Else
 						CloseCoC()
 					EndIf
@@ -52,6 +67,18 @@ Func checkAttackDisable($iSource, $Result = "")
 				If StringInStr($Result, "been") <> 0 Or StringInStr($Result, "after") <> 0 Or StringInStr($Result, "have") <> 0 Then ; verify we have right text string, 'after' added for Personal Break
 					Setlog("Online too long, Take-A-Break detected. Exiting CoC", $COLOR_RED)
 					checkMainScreen()
+					If $ichkMultyFarming = 1 Then
+						SetLog("Change Account for Take-A-Break detected", $COLOR_MAROON)
+					    If GUICtrlRead($account) = "Main" Then
+						   SwitchSecond()
+						   $RunState = True
+						   $fullArmy = True
+						ElseIf GUICtrlRead($account) = "Second" Then
+						   SwitchMain()
+						   $RunState = True
+						   Return False
+						EndIf
+					EndIf
 				Else
 					If $debugSetlog = 1 Then Setlog("wrong text string", $COLOR_PURPLE)
 					Return ; exit function, wrong string found

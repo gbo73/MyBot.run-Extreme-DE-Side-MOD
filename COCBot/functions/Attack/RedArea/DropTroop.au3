@@ -1,13 +1,11 @@
-
-Func DropTroop($troop, $nbSides, $number, $slotsPerEdge = 0, $indexToAttack = -1)
-
+Func DropTroop($troop, $nbSides, $number, $slotsPerEdge = 0, $indexToAttack = -1, $overrideSmartDeploy = -1)
 	If isProblemAffect(True) Then Return
+
 	$nameFunc = "[DropTroop]"
 	debugRedArea($nameFunc & " IN ")
 	debugRedArea("troop : [" & $troop & "] / nbSides : [" & $nbSides & "] / number : [" & $number & "] / slotsPerEdge [" & $slotsPerEdge & "]")
 
-
-	If ($iChkRedArea[$iMatchMode]) Then
+	If ($iChkRedArea[$iMatchMode]) And $overrideSmartDeploy = -1 Then
 		If $slotsPerEdge = 0 Or $number < $slotsPerEdge Then $slotsPerEdge = $number
 		If _Sleep($iDelayDropTroop1) Then Return
 		SelectDropTroop($troop) ;Select Troop
@@ -16,7 +14,6 @@ Func DropTroop($troop, $nbSides, $number, $slotsPerEdge = 0, $indexToAttack = -1
 		If $nbSides < 1 Then Return
 		Local $nbTroopsLeft = $number
 		If ($iChkSmartAttack[$iMatchMode][0] = 0 And $iChkSmartAttack[$iMatchMode][1] = 0 And $iChkSmartAttack[$iMatchMode][2] = 0) Then
-
 			If $nbSides = 4 Then
 				Local $edgesPixelToDrop = GetPixelDropTroop($troop, $number, $slotsPerEdge)
 
@@ -30,11 +27,8 @@ Func DropTroop($troop, $nbSides, $number, $slotsPerEdge = 0, $indexToAttack = -1
 				Return
 			EndIf
 
-
 			For $i = 0 To $nbSides - 1
-
 				If $nbSides = 1 Or ($nbSides = 3 And $i = 2) Then
-
 					Local $nbTroopsPerEdge = Round($nbTroopsLeft / ($nbSides - $i))
 					If ($number > 0 And $nbTroopsPerEdge = 0) Then $nbTroopsPerEdge = 1
 					Local $edgesPixelToDrop = GetPixelDropTroop($troop, $nbTroopsPerEdge, $slotsPerEdge)
@@ -80,7 +74,6 @@ Func DropTroop($troop, $nbSides, $number, $slotsPerEdge = 0, $indexToAttack = -1
 	EndIf
 
 	debugRedArea($nameFunc & " OUT ")
-
 EndFunc   ;==>DropTroop
 
 Func DropTroop2($troop, $nbSides, $number, $slotsPerEdge = 0, $name = "")
@@ -99,6 +92,7 @@ Func DropTroop2($troop, $nbSides, $number, $slotsPerEdge = 0, $name = "")
 		If $nbSides < 1 Then Return
 		Local $nbTroopsLeft = $number
 		Local $nbTroopsPerEdge = Round($nbTroopsLeft / $nbSides)
+
 		If (($iChkSmartAttack[$iMatchMode][0] = 0 And $iChkSmartAttack[$iMatchMode][1] = 0 And $iChkSmartAttack[$iMatchMode][2] = 0) Or UBound($PixelNearCollector) = 0) Then
 			If ($number > 0 And $nbTroopsPerEdge = 0) Then $nbTroopsPerEdge = 1
 			If $nbSides = 4 Then
@@ -119,9 +113,6 @@ Func DropTroop2($troop, $nbSides, $number, $slotsPerEdge = 0, $name = "")
 					EndIf
 				Next
 			EndIf
-
-
-
 		Else
 			Local $listEdgesPixelToDrop[0]
 
@@ -165,9 +156,7 @@ Func DropTroop2($troop, $nbSides, $number, $slotsPerEdge = 0, $name = "")
 				EndIf
 
 				$listInfoPixelDropTroop[UBound($listInfoPixelDropTroop) - 1] = _FindPixelCloser($arrPixelToSearch, $pixel, 1)
-
 			Next
-
 		EndIf
 	Else
 		DropOnEdges($troop, $nbSides, $number, $slotsPerEdge)
@@ -176,5 +165,4 @@ Func DropTroop2($troop, $nbSides, $number, $slotsPerEdge = 0, $name = "")
 	Local $infoDropTroop[6] = [$troop, $listInfoPixelDropTroop, $nbTroopsPerEdge, $slotsPerEdge, $number, $name]
 	Return $infoDropTroop
 	debugRedArea($nameFunc & " OUT ")
-
 EndFunc   ;==>DropTroop2
