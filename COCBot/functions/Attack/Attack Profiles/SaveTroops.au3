@@ -204,7 +204,7 @@ Func LaunchSaveTroops($listInfoDeploy, $CC, $King, $Queen, $Warden, $overrideSma
 
 				Setlog("Checking for remaining collectors...")
 
-				Local $foundRemainingCollectors = False
+				Local $foundRemainingCollectors = 0
 				_WinAPI_DeleteObject($hBitmapFirst)
 				$hBitmapFirst = _CaptureRegion2()
 
@@ -219,7 +219,7 @@ Func LaunchSaveTroops($listInfoDeploy, $CC, $King, $Queen, $Warden, $overrideSma
 
 					If (IsArray($PixelMine)) Then
 						_ArrayAdd($PixelNearCollector, $PixelMine)
-						$foundRemainingCollectors = True
+						$foundRemainingCollectors = 1
 					EndIf
 				EndIf
 
@@ -229,7 +229,7 @@ Func LaunchSaveTroops($listInfoDeploy, $CC, $King, $Queen, $Warden, $overrideSma
 
 					If (IsArray($PixelElixir)) Then
 						_ArrayAdd($PixelNearCollector, $PixelElixir)
-						$foundRemainingCollectors = True
+						$foundRemainingCollectors = 1
 					EndIf
 				EndIf
 
@@ -238,11 +238,31 @@ Func LaunchSaveTroops($listInfoDeploy, $CC, $King, $Queen, $Warden, $overrideSma
 					$PixelDarkElixir = GetLocationDarkElixir()
 					If (IsArray($PixelDarkElixir)) Then
 						_ArrayAdd($PixelNearCollector, $PixelDarkElixir)
-						$foundRemainingCollectors = True
+						$foundRemainingCollectors = 1
 					EndIf
 				EndIf
 
-				If $foundRemainingCollectors  Then
+				 $Barb = 0
+				 $Arch = 0
+
+			      If $foundRemainingCollectors = 1 Then
+					 $Barb = -1
+					 For $i = 0 To 11
+						If $atkTroops[$i][0] = $eBarb Then
+						   $Barb = $i
+						EndIf
+					 Next
+				  EndIf
+
+				  If $foundRemainingCollectors = 1 Then
+					 For $i = 0 To 11
+						If $atkTroops[$i][0] = $eArch Then
+						   $Arch = $i
+						EndIf
+					 Next
+				  EndIf
+
+				If $foundRemainingCollectors = 1 And $Arch = -1 And $Barb = -1 Then
 					SetLog("[" & UBound($PixelMine) & "] Gold Mines")
 					SetLog("[" & UBound($PixelElixir) & "] Elixir Collectors")
 					SetLog("[" & UBound($PixelDarkElixir) & "] Dark Elixir Drill/s")
