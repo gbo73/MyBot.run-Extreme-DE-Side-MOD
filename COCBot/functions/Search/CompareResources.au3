@@ -6,7 +6,7 @@
 ; Return values .: True if compaired resources match the search conditions, False if not
 ; Author ........: (2014)
 ; Modified ......: AtoZ, Hervidero (2015), kaganus (June 2015, August 2015)
-; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......: VillageSearch, GetResources
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
@@ -44,6 +44,7 @@ Func CompareResources($pMode) ;Compares resources and returns true if conditions
 		Case "Out"
 			$THLO = 1
 	EndSwitch
+
 
 	$SearchTHLResult = 0
 	;   Local $YourTHNumHere
@@ -117,10 +118,6 @@ Func CompareResources($pMode) ;Compares resources and returns true if conditions
 		EndIf
 
 		If $iChkMeetTHO[$pMode] = 1 Then
-			If $THLO <> 1 Then Return False
-		EndIf
-
-		If $iChkMeetTHO[$pMode] = 1 And $iChkMeetTH[$pMode] <> 1 Then
 			If $THLO <> 1 Then Return False
 		EndIf
 

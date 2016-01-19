@@ -6,7 +6,7 @@
 ; Return values .: None
 ; Author ........: GkevinOD (2014)
 ; Modified ......: Hervidero (2015)
-; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......:
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
@@ -51,7 +51,7 @@ Func chkTimeStopAtk2()
 EndFunc   ;==>chkTimeStopAtk2
 
 Func chkDESideEB()
-	If _GUICtrlComboBox_GetCurSel($cmbABDeploy) = 6 Then
+	If _GUICtrlComboBox_GetCurSel($cmbABDeploy) = 4 Then
 		GUICtrlSetState($chkDESideEB, $GUI_ENABLE)
 		If GUICtrlRead($chkDESideEB) = $GUI_CHECKED Then
 			For $i = $txtDELowEndMin To $lblDEEndAq

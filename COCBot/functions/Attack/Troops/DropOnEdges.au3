@@ -1,4 +1,22 @@
 
+; #FUNCTION# ====================================================================================================================
+; Name ..........: DropOnEdges
+; Description ...:
+; Syntax ........: DropOnEdges($troop, $nbSides, $number[, $slotsPerEdge = 0])
+; Parameters ....: $troop               - a dll struct value.
+;                  $nbSides             - a general number value.
+;                  $number              - a general number value.
+;                  $slotsPerEdge        - [optional] a string value. Default is 0.
+; Return values .: None
+; Author ........:
+; Modified ......:
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
+;                  MyBot is distributed under the terms of the GNU GPL
+; Related .......:
+; Link ..........: https://github.com/MyBotRun/MyBot/wiki
+; Example .......: No
+; ===============================================================================================================================
+;
 Func DropOnEdges($troop, $nbSides, $number, $slotsPerEdge = 0)
 	If $nbSides = 0 Or $number = 1 Then
 		OldDropTroop($troop, $Edges[0], $number);
@@ -6,24 +24,6 @@ Func DropOnEdges($troop, $nbSides, $number, $slotsPerEdge = 0)
 	EndIf
 	If $nbSides < 1 Then Return
 	Local $nbTroopsLeft = $number
-
-	If $nbSides = 5 Then
-		If $slotsPerEdge = 2 Then
-			For $i = 0 To $nbSides - 4 ;Four Finger Deployment Giants
-				Local $nbTroopsPerEdge = Round($nbTroopsLeft / (($nbSides-1) - $i * 2))
-				DropOnEdge($troop, $Edges[$i], $nbTroopsPerEdge, $slotsPerEdge, $Edges[$i + 2],$i)
-				$nbTroopsLeft -= $nbTroopsPerEdge * 2
-			Next
-		Else
-			For $i = 0 To $nbSides - 5 ;Four Finger Deployment Barch
-				Local $nbTroopsPerEdge = Round($nbTroopsLeft / (($nbSides-1) - $i * 2))
-				DropOnEdge($troop, $Edges[$i], $nbTroopsPerEdge, $slotsPerEdge, $Edges[$i + 2],$i, $nbSides)
-				$nbTroopsLeft -= $nbTroopsPerEdge * 2
-			Next
-		EndIf
-		Return
-	EndIf
-
 	If $nbSides = 4 Then
 		For $i = 0 To $nbSides - 3
 			Local $nbTroopsPerEdge = Round($nbTroopsLeft / ($nbSides - $i * 2))
@@ -35,7 +35,7 @@ Func DropOnEdges($troop, $nbSides, $number, $slotsPerEdge = 0)
 	For $i = 0 To $nbSides - 1
 		If $nbSides = 1 Or ($nbSides = 3 And $i = 2) Then
 			Local $nbTroopsPerEdge = Round($nbTroopsLeft / ($nbSides - $i))
-			If $iMatchMode = $LB And $iChkDeploySettings[$LB] >= 6 Then  ; Used for DE or TH side attack
+			If $iMatchMode = $LB And $iChkDeploySettings[$LB] >= 4 Then  ; Used for DE or TH side attack
 				DropOnEdge($troop, $Edges[$BuildingEdge], $nbTroopsPerEdge, $slotsPerEdge)
 			Else
 				DropOnEdge($troop, $Edges[$i], $nbTroopsPerEdge, $slotsPerEdge)

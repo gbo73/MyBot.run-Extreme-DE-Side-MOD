@@ -6,7 +6,7 @@
 ; Return values .: None
 ; Author ........: GKevinOD (2014)
 ; Modified ......: DkEd, Hervidero (2015)
-; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......:
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
@@ -540,14 +540,11 @@ GUICtrlCreateGroup("", -99, -99, 1, 1)
 
 Local $x = 240, $y = 463
 $grpOtherExpert = GUICtrlCreateGroup(GetTranslated(10,55, "Photo Screenshot Options"), $x - 20, $y - 17, 240, 59)
-	$chkScreenshotType = GUICtrlCreateCheckbox(GetTranslated(10, 56, "Make in PNG format"), $x - 10, $y, 115, -1)
+	$chkScreenshotType = GUICtrlCreateCheckbox(GetTranslated(10,56, "Make in PNG format"), $x, $y, -1, -1)
 		GUICtrlSetOnEvent(-1, "chkScreenshotType")
-	$chkScreenshotQuadrants = GUICtrlCreateCheckbox("Draw Quadrants", $x + 115, $y, 100, -1)
-		GUICtrlSetOnEvent(-1, "chkScreenshotQuadrants")
 $y += 19
-	$chkScreenshotHideName = GUICtrlCreateCheckbox(GetTranslated(10, 57, "Hide Village and Clan Castle Name"), $x - 10, $y, -1, -1)
+	$chkScreenshotHideName = GUICtrlCreateCheckbox(GetTranslated(10,57, "Hide Village and Clan Castle Name"), $x, $y, -1, -1)
 		GUICtrlSetOnEvent(-1, "chkScreenshotHideName")
-$y += 19
 GUICtrlCreateGroup("", -99, -99, 1, 1)
 GUICtrlCreateTabItem("")
 

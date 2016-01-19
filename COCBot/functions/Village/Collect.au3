@@ -7,7 +7,7 @@
 ; Return values .: None
 ; Author ........: Code Gorilla #3
 ; Modified ......: Sardo 2015-08, KnowJack(Aug 2015), kaganus (August 2015)
-; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......:
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
@@ -67,12 +67,10 @@ Func Collect()
 				If _Sleep($iDelayCollect1) Then Return
 			EndIf
 			ClickP($aAway, 1, 0, "#0329") ;Click Away
-			If $i >= 20 Then
-			    ExitLoop
-			EndIf
-		ElseIf $i >= 20 Then
+		Else
 			ExitLoop
 		EndIf
+		If $i >= 20 Then ExitLoop
 		$i += 1
 	WEnd
 	If _Sleep($iDelayCollect3) Then Return

@@ -6,7 +6,7 @@
 ; Return values .: None
 ; Author ........: GKevinOD (2014)
 ; Modified ......: DkEd, Hervidero (2015)
-; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......:
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
@@ -16,12 +16,12 @@
 ;~ ------------------------------------------------------
 ;~ Main GUI
 ;~ ------------------------------------------------------
-$frmBot = GUICreate($sMODTitle, 470, 650)
+$frmBot = GUICreate($sBotTitle, 470, 650)
 	GUISetIcon($pIconLib, $eIcnGUI)
 	TraySetIcon($pIconLib, $eIcnGUI)
 $tabMain = GUICtrlCreateTab(5, 85, 461, 425, $TCS_MULTILINE)
-	GUICtrlSetOnEvent(-1, "tabMain")
-	GUICtrlCreatePic (@ScriptDir & "\Icons\logo.jpg", 0, 0, 470, 80)
+	;GUICtrlSetOnEvent(-1, "tabMain") ; moved to Func GUIControl()
+	GUICtrlCreatePic (@ScriptDir & "\Images\logo.jpg", 0, 0, 470, 80)
 
 ;~ ------------------------------------------------------
 ;~ Header Menu
@@ -30,18 +30,6 @@ $tabMain = GUICtrlCreateTab(5, 85, 461, 425, $TCS_MULTILINE)
 $DonateMenu = GUICtrlCreateMenu("&Paypal Donate?")
 $DonateConfig = GUICtrlCreateMenuItem("Support the development", $DonateMenu)
 GUICtrlSetOnEvent(-1, "")
-$account =  GUICtrlCreateLabel("hii", 150, 0, 100)
-GUICtrlSetState($account, $GUI_HIDE)
-$SwitchMenu = GUICtrlCreateMenu("Account Options")
-$Detect = GUICtrlCreateMenuItem("Detect Current Account", $SwitchMenu)
-	GUICtrlSetOnEvent(-1, "DetectAccount")
-	GUICtrlSetTip(-1, "Detect current account then load corresponding profile")
-$Main = GUICtrlCreateMenuItem("Switch to Main Account", $SwitchMenu)
-	GUICtrlSetOnEvent(-1, "SwitchMain")
-	GUICtrlSetTip(-1, "Switch to main account")
-$Second = GUICtrlCreateMenuItem("Switch to Second Account", $SwitchMenu)
-	GUICtrlSetOnEvent(-1, "SwitchSecond")
-	GUICtrlSetTip(-1, "Switch to Second account")
 
 ;~ ------------------------------------------------------
 ;~ Tab Files
@@ -49,20 +37,18 @@ $Second = GUICtrlCreateMenuItem("Switch to Second Account", $SwitchMenu)
 #include "GUI\MBR GUI Design Bottom.au3"
 #include "GUI\MBR GUI Design Tab General.au3" ; includes '$FirstControlToHide" on GUI
 #include "GUI\MBR GUI Design Tab Troops.au3"
-#include "GUI\MBR GUI Design Tab Profiles.au3"
 #include "GUI\MBR GUI Design Tab Search.au3"
 #include "GUI\MBR GUI Design Tab Attack.au3"
+#include "GUI\MBR GUI Design Tab AttackCSV.au3"
 #include "GUI\MBR GUI Design Tab Advanced.au3"
 #include "GUI\MBR GUI Design Tab EndBattle.au3"
 #include "GUI\MBR GUI Design Tab Donate.au3"
 #include "GUI\MBR GUI Design Tab Misc.au3"
 #include "GUI\MBR GUI Design Tab Upgrade.au3"
 #include "GUI\MBR GUI Design Tab Notify.au3"
-#include "GUI\MBR GUI Design Tab Options.au3"
-#include "GUI\MBR GUI Design Tab Others.au3"
 #include "GUI\MBR GUI Design Tab Expert.au3"
 #include "GUI\MBR GUI Design Tab Stats.au3" ; includes '$LastControlToHide" on GUI
-
+#include "GUI\MBR GUI Design Collectors.au3"
 ;~ -------------------------------------------------------------
 ;~ About Us Tab
 ;~ -------------------------------------------------------------

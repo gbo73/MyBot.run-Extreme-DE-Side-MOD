@@ -7,7 +7,7 @@
 ; Return values .: None
 ; Author ........: Hervidero (2015-feb-10), Sardo (may-2015), Hervidero (2015-12)
 ; Modified ......: Sardo (may-2015), Hervidero (may-2015), Knowjack (July 2015)
-; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......:
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
@@ -142,14 +142,6 @@ Func AttackReport()
 	If _ColorCheck(_GetPixelColor($aWonThreeStarAtkRprt[0], $aWonThreeStarAtkRprt[1], True), Hex($aWonThreeStarAtkRprt[2], 6), $aWonThreeStarAtkRprt[3]) Then $starsearned += 1
 	SetLog("Stars earned: " & $starsearned)
 
-
-	Local $HeroFilterUsed
-	If $LBHeroFilter = 1 Then
-		$HeroFilterUsed = " Y"
-	Else
-		$HeroFilterUsed = " N"
-	EndIf
-
 	Local $AtkLogTxt
 	$AtkLogTxt = "" & _NowTime(4) & "|"
 	$AtkLogTxt &= StringFormat("%5d", $iTrophyCurrent) & "|"
@@ -183,8 +175,6 @@ Func AttackReport()
 			$iShareAttackNow = 0
 		EndIf
 	EndIf
-
-	CoCStats($starsearned)
 
 	If $FirstAttack = 0 Then $FirstAttack = 1
 	$iGoldTotal += $iGoldLast + $iGoldLastBonus

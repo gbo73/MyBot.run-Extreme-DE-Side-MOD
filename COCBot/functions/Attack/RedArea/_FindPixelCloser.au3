@@ -1,4 +1,20 @@
-; Search the closer array of pixel in the array of pixel
+;
+; #FUNCTION# ====================================================================================================================
+; Name ..........: _FindPixelCloser
+; Description ...: Search the closer array of pixel in the array of pixel
+; Syntax ........: _FindPixelCloser($arrPixel, $pixel[, $nb = 1])
+; Parameters ....: $arrPixel            - an array of unknowns.
+;                  $pixel               - a pointer value.
+;                  $nb                  - [optional] a general number value. Default is 1.
+; Return values .: None
+; Author ........: didipe
+; Modified ......:
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
+;                  MyBot is distributed under the terms of the GNU GPL
+; Related .......:
+; Link ..........: https://github.com/MyBotRun/MyBot/wiki
+; Example .......: No
+; ===============================================================================================================================
 Func _FindPixelCloser($arrPixel, $pixel, $nb = 1)
 
 	If IsArray($arrPixel) = False Then Return ; Prevent error
@@ -43,13 +59,5 @@ Func _FindPixelCloser($arrPixel, $pixel, $nb = 1)
 		$arrPixelCloser[UBound($arrPixelCloser) - 1] = $PixelCloser
 
 	Next
-	If $saveTroops = 1 Then
-		If $countFindPixCloser < UBound($PixelNearCollector) Then
-	            Local $DistancePixeltoPixCLoser = Sqrt(($PixelCloser[0]-$pixel[0])^2 + ($PixelCloser[1] - $pixel[1])^2)
-			;setlog("Distance is " & $DistancePixeltoPixCLoser)
-			If $DistancePixeltoPixCLoser < 51 Then $countCollectorexposed += 1
-			$countFindPixCloser += 1
-		EndIf
-	EndIf
 	Return $arrPixelCloser
 EndFunc   ;==>_FindPixelCloser

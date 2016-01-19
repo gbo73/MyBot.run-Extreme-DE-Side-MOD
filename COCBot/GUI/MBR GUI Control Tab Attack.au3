@@ -6,7 +6,7 @@
 ; Return values .: None
 ; Author ........: GkevinOD (2014)
 ; Modified ......: Hervidero (2015)
-; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......:
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
@@ -25,67 +25,21 @@ Func chkDBSmartAttackRedArea()
 			GUICtrlSetState($i, $GUI_HIDE)
 		Next
 	EndIf
- EndFunc   ;==>chkDBSmartAttackRedArea
-
- Func chkDBAttackOption()
-    If _GUICtrlComboBox_GetCurSel($cmbDBDeploy) = 5 Then
-        $iChkRedArea[$DB] = 0
-        GUICtrlSetState($chkDBSmartAttackRedArea, $GUI_UNCHECKED)
-        GUICtrlSetState($chkDBSmartAttackRedArea, $GUI_HIDE)
-        For $i = $lblDBSmartDeploy To $picDBAttackNearDarkElixirDrill
-            GUICtrlSetState($i, $GUI_HIDE)
-        Next
-    Else
-        GUICtrlSetState($chkDBSmartAttackRedArea, $GUI_SHOW)
-	 EndIf
-
-   If _GUICtrlComboBox_GetCurSel($cmbDBDeploy) = 4 Then
-		GUICtrlSetState($chkDBSmartAttackRedArea, $GUI_CHECKED)
-		GUICtrlSetState($chkDBAttackNearGoldMine, $GUI_CHECKED)
-		GUICtrlSetState($chkDBAttackNearElixirCollector, $GUI_CHECKED)
-		GUICtrlSetState($chkDBAttackNearDarkElixirDrill, $GUI_CHECKED)
-		GUICtrlSetState($chkAttackTH, $GUI_UNCHECKED)
-		chkDBSmartAttackRedArea()
-	EndIf
-
-EndFunc   ;==>chkDBAttackOption
+EndFunc   ;==>chkDBSmartAttackRedArea
 
 Func chkABSmartAttackRedArea()
-   chkDESideEB()
-   If _GUICtrlComboBox_GetCurSel($cmbABDeploy) >= 4 Then
-		GUICtrlSetState($chkABSmartAttackRedArea, $GUI_UNCHECKED)
-		GUICtrlSetState ($chkABSmartAttackRedArea, $GUI_HIDE)
-		$iChkRedArea[$LB] = 0
-		For $i = $lblABSmartDeploy To $picABAttackNearDarkElixirDrill
-			GUICtrlSetState($i, $GUI_HIDE)
-	    Next
-        For $i = 1 to 24
-		   GUICtrlSetState(Eval("cmbDeDeploy" & StringRight("0" & $i,2)), $GUI_ENABLE)
-		   GUICtrlSetState(Eval("txtDeStyle" & StringRight("0" & $i,2)), $GUI_ENABLE)
-        Next
-		GUICtrlSetState($btnSave, $GUI_ENABLE)
-		GUICtrlSetState($btnLoad, $GUI_ENABLE)
-	 Else
-        For $i = 1 to 24
-		   GUICtrlSetState(Eval("cmbDeDeploy" & StringRight("0" & $i,2)), $GUI_DISABLE)
-		   GUICtrlSetState(Eval("txtDeStyle" & StringRight("0" & $i,2)), $GUI_DISABLE)
-        Next
-		GUICtrlSetState($btnSave, $GUI_DISABLE)
-		GUICtrlSetState($btnLoad, $GUI_DISABLE)
-  	    GUICtrlSetState ($chkABSmartAttackRedArea, $GUI_SHOW)
-	 EndIf
 	If GUICtrlRead($chkABSmartAttackRedArea) = $GUI_CHECKED Then
 		$iChkRedArea[$LB] = 1
 		For $i = $lblABSmartDeploy To $picABAttackNearDarkElixirDrill
 			GUICtrlSetState($i, $GUI_SHOW)
-		 Next
-     Else
+		Next
+	Else
 		$iChkRedArea[$LB] = 0
 		For $i = $lblABSmartDeploy To $picABAttackNearDarkElixirDrill
 			GUICtrlSetState($i, $GUI_HIDE)
-		 Next
+		Next
 	EndIf
- EndFunc  ;==>chkABSmartAttackRedArea
+EndFunc   ;==>chkABSmartAttackRedArea
 
 Func chkBalanceDR()
 	If GUICtrlRead($chkUseCCBalanced) = $GUI_CHECKED Then

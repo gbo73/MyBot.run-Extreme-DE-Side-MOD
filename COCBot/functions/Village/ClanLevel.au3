@@ -3,7 +3,7 @@
 ; Description ...: Gets Clan Level to assign the correct quantity troops to train after donate - DonateCC.au3
 ; Author ........: ProMac (2015)
 ; Modified ......:
-; Remarks .......: This file is part of MyBot Copyright 2015
+; Remarks .......: This file is part of MyBot Copyright 2015-2016
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......: Assign the Clan Level to $iClanLevel
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
@@ -21,6 +21,10 @@ Func ClanLevel()
 	;Verify if exist and active Clan Icon (2 swords) in mainscreen
 	If Not _ColorCheck(_GetPixelColor(19, 474 + $midOffsetY , true), Hex(0xE2A539, 6), 15) Then
 		SetLog("Please join a Clan ...", $COLOR_GREEN)
+		If $iChkRequest = 1 then
+			$canRequestCC = False
+			SetLog("Clan Requests Turned Off, be careful with your settings!", $COLOR_RED)
+		EndIf
 		$iClanLevel = 0
 		Return
 	EndIf

@@ -6,7 +6,7 @@
 ; Return values .: None
 ; Author ........: Samota
 ; Modified ......: Sardo (2015-06) : add exit for minimum resource left
-; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......:v
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
@@ -70,7 +70,7 @@ Func GoldElixirChangeEBO()
 		CheckHeroesHealth()
 
 		;DE SPECIAL END EARLY
-		If $iMatchMode = $LB And $iChkDeploySettings[$LB] = 6 And $DESideEB Then
+		If $iMatchMode = $LB And $iChkDeploySettings[$LB] = 4 And $DESideEB Then
 			If $dropQueen Or $dropKing Then DELow()
 			If $DarkLow = 1 Then ExitLoop
 		EndIf
@@ -147,7 +147,7 @@ Func GoldElixirChangeEBO()
 	WEnd ; END MAIN LOOP
 
 	;Priority Check... Exit To protect Hero Health
-	If $iMatchMode = $LB And $iChkDeploySettings[$LB] = 6 And $DESideEB And $DarkLow = 1 Then
+	If $iMatchMode = $LB And $iChkDeploySettings[$LB] = 4 And $DESideEB And $DarkLow = 1 Then
 		SetLog("Returning Now -DE-", $COLOR_GREEN)
 		Return False
 	EndIf

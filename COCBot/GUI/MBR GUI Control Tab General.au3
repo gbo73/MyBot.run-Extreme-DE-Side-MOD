@@ -6,7 +6,7 @@
 ; Return values .: None
 ; Author ........: GkevinOD (2014)
 ; Modified ......: Hervidero (2015)
-; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015
+; Remarks .......: This file is part of MyBot, previously known as ClashGameBot. Copyright 2015-2016
 ;                  MyBot is distributed under the terms of the GNU GPL
 ; Related .......:
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
@@ -89,9 +89,6 @@ Func cmbLogImpl($ApplyConfig)
 			ControlMove($frmBot, "", $txtAtkLog, $x, $y, $w, $h * 2 + $iDividerHeight)
 			GUICtrlSetState($divider, $GUI_HIDE);ControlHide($frmBot, "", $divider)
 	EndSwitch
-
-	; Make sure logs are hidden when appropriate
-	tabMain()
 EndFunc   ;==>cmbLogImpl
 
 Func MoveDivider()
