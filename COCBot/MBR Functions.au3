@@ -163,6 +163,9 @@
 #include "functions\Other\KillProcess.au3"
 #include "functions\Other\LaunchConsole.au3"
 #include "functions\Other\ADB.au3"
+#include "functions\Other\SwitchAccount.au3"
+#include "functions\Other\DetectAccount.au3"
+#include "functions\Other\SwitchDonate.au3"
 
 #include "functions\Pixels\_CaptureRegion.au3"
 #include "functions\Pixels\_ColorCheck.au3"
@@ -189,6 +192,10 @@
 ;#include "functions\Read Text\Obsolete\getReturnHome.au3"
 ;#include "functions\Read Text\Obsolete\getTrophy.au3"
 ;#include "functions\Read Text\Obsolete\getString.au3"
+
+#include "functions\SmartZap\DEDrillSearch.au3"
+#include "functions\SmartZap\DEDropSmartSpell.au3"
+#include "functions\SmartZap\DrillZapSpell.au3"
 
 #include "functions\Search\CompareResources.au3"
 #include "functions\Search\GetResources.au3"

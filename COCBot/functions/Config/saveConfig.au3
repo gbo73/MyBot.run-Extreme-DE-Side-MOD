@@ -1490,7 +1490,41 @@ Func saveConfig() ;Saves the controls settings to the config
 		IniWrite($config, "attackCSV", "EnableScriptAB", 1)
 	Else
 		IniWrite($config, "attackCSV", "EnableScriptAB", 0)
+   EndIf
+
+	 ;Others Settings--------------------------------------------------------------------------
+	If GUICtrlRead($chkSwitchDonate) = $GUI_CHECKED Then
+		IniWrite($config, "Others", "SwitchDonate", 1)
+	Else
+		IniWrite($config, "Others", "SwitchDonate", 0)
 	EndIf
+
+	If GUICtrlRead($chkMultyFarming) = $GUI_CHECKED Then
+		IniWrite($config, "Others", "MultyFarming", 1)
+	Else
+		IniWrite($config, "Others", "MultyFarming", 0)
+	 EndIf
+
+   ;ichkSmartLightSpell DE Smart Lightning Zap
+	If GUICtrlRead($chkSmartLightSpell) = $GUI_CHECKED Then
+		IniWrite($config, "Others", "SmartLightSpell", "1")
+	Else
+		IniWrite($config, "Others", "SmartLightSpell", "0")
+	EndIf
+	If GUICtrlRead($chkTrainLightSpell) = $GUI_CHECKED Then
+		IniWrite($config, "Others", "TrainLightSpell", "1")
+	Else
+		IniWrite($config, "Others", "TrainLightSpell", "0")
+	EndIf
+
+
+	IniWrite($config, "Others", "txtMinDark", GUICtrlRead($txtMinDark))
+
+	If GUICtrlRead($chkDrillZapTH) = $GUI_CHECKED Then
+		IniWrite($config, "Others", "chkDrillZapTH", "1")
+	Else
+		IniWrite($config, "Others", "chkDrillZapTH", "0")
+	 EndIf
 
 	If $hFile <> -1 Then FileClose($hFile)
 

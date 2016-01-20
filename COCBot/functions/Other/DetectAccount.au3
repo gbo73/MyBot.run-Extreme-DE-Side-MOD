@@ -45,13 +45,9 @@ $bm2 = _GDIPlus_ImageLoadFromFile (@ScriptDir & "\images\temp.bmp")
 
    If CompareBitmaps($bm1, $bm2) Then
 	  SetLog("Main account Detected...", $COLOR_GREEN)
-	  GUICtrlSetData($account, "Main")
 	  _GUICtrlComboBox_SetCurSel($cmbProfile, 0)
 	  cmbProfile()
    ElseIf CompareBitmaps($bm3, $bm2) Then
-	  SetLog("Second account Detected...", $COLOR_Blue)
-	  GUICtrlSetData($account, "Second")
-
 	  _GUICtrlComboBox_SetCurSel($cmbProfile, 1)
 	  cmbProfile()
    Else

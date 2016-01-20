@@ -933,3 +933,18 @@ $gui2open = 0
 Global $iDeadBase75percent = 1
 Global $iDeadBase75percentStartLevel = 4
 
+;Multy Farming
+Global $ichkSwitchDonate
+Global $ichkMultyFarming
+
+;ZAp Drill
+Global $ichkSmartLightSpell
+global $ichkTrainLightSpell
+Global $iDrills[4][4] = [[-1, -1, -1, -1], [-1, -1, -1, -1], [-1, -1, -1, -1], [-1, -1, -1, -1]] ; [LocX, LocY, BldgLvl, Quantity=filled by other functions]
+Global $smartZapGain = 0
+Global $NumLTSpellsUsed = 0
+Global $ichkDrillZapTH
+Global $itxtMinDark
+Global $txtMinDark
+Global $iLTSpellCost, $LTSCost , $LTSpellCost
+

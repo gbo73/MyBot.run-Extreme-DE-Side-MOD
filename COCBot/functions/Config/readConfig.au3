@@ -613,6 +613,18 @@ Func readConfig() ;Reads config and sets it to the variables
 		$ichkHasteSpell[$DB] = IniRead($config, "attackCSV", "DBHasteSpell", "0")
 		$ichkHasteSpell[$LB] = IniRead($config, "attackCSV", "ABHasteSpell", "0")
 
+		;Others Settings--------------------------------------------------------------------------
+		$ichkSwitchDonate = IniRead($config, "Others", "SwitchDonate", "0")
+		$ichkMultyFarming = IniRead($config, "Others", "MultyFarming", "0")
+		$ichkHideTaskBar = IniRead($config, "Others", "HideTaskBarIcon", "0")
+
+		$ichkSmartLightSpell = IniRead($config, "Others", "SmartLightSpell", "0")
+		$ichkTrainLightSpell = IniRead($config, "Others", "TrainLightSpell", "0")
+		$itxtMinDark = IniRead($config, "Others", "txtMinDark", "1000")
+		$ichkDrillZapTH = IniRead($config, "Others", "chkDrillZapTH", "0")
+		$useFFBarchST = IniRead($config, "Others", "ChkSTFFBarch", "0")
+		$percentCollectors = IniRead($config, "Others", "txtTHpercentCollectors", "80")
+
 
 	Else
 		Return False
