@@ -87,4 +87,13 @@ Func getArmySpellCount($bOpenArmyWindow = False, $bCloseArmyWindow = False)
 		If _Sleep($iDelaycheckArmyCamp4) Then Return
 	EndIf
 
+			If $CurEarthSpell >= 4 Then
+				Setlog(" - No. of EarthquakeSpell: " & $CurEarthSpell & " Ready to drooped in battle")
+				$ichkEarthquakeSpell[$LB] = 1
+				GUICtrlSetState($chkABEarthquakeSpellCSV, $GUI_CHECKED)
+			Else
+				Setlog(" - No. of EarthquakeSpell: " & $CurEarthSpell & " waiting to 4 to drooped in battle")
+				$ichkEarthquakeSpell[$LB] = 0
+				GUICtrlSetState($chkABEarthquakeSpellCSV, $GUI_UNCHECKED)
+			EndIf
 EndFunc   ;==>getArmySpellCount
