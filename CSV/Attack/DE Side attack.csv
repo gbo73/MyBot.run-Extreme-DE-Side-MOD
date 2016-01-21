@@ -24,9 +24,11 @@ MAKE  |G          |FRONT-LEFT |10         |3          |INT-EXT    |0          |5
 MAKE  |H          |FRONT-LEFT |10         |3          |EXT-INT    |0          |5          |           |vector for archers front left n.2
 MAKE  |I          |FRONT-RIGHT|10         |3          |INT-EXT    |0          |5          |           |vector for archers front right n.1
 MAKE  |J          |FRONT-RIGHT|10         |3          |EXT-INT    |0          |5          |           |vector for archers front right n.2
+MAKE  |K          |FRONT-RIGHT|80         |1          |INT-EXT    |0          |5          |           |
       |VECTOR_____|INDEX______|QTY_X_VECT_|TROOPNAME__|DELAY_DROP_|DELAYCHANGE|SLEEPAFTER_|___________|
-DROP  |A-B        |2          |8          |giant      |0          |0          |800-1200   |           |launch giant (8 giant, four front left and four front right)                        - 8 giant
-DROP  |A-B        |1          |3-4        |wall       |0          |0          |800-1200   |           |launch 3-4 Wallbreaker
+DROP  |K          |1          |4          |ESpell     |0          |0          |300-500    |           |Launch Earhquake Spell if 4 earthquake spell ready at -6 tiles from redarea
+DROP  |A-B        |1-5        |1          |giant      |0          |0          |800-1200   |           |launch giant (8 giant, four front left and four front right)                        - 8 giant
+DROP  |A-B        |1          |2-3        |wall       |0          |0          |800-1200   |           |launch 3-4 Wallbreaker
 DROP  |C-E        |1-5        |5-6        |barb       |0          |0          |0          |           |launch 5-6 barbarian in 5 drop point (use drop point number 1,2,3,4,5) x 2 sides  - 10-12 barb
 DROP  |D-F        |7-10       |3-4        |barb       |0          |0          |700-1000   |           |launch 3-4 barbarian in 4 drop point (use drop point number 7,8,9,10) x 2 sides   - 6-8 barb
 DROP  |G-I        |1-5        |5-6        |arch       |0          |0          |0          |           |launch 5-6 archers   in 5 drop point (use drop point number 1,2,3,4,5) x 2 sides  - 10-12 arch
@@ -35,7 +37,7 @@ DROP  |G-I        |1-5        |5-6        |mini       |0          |0          |0
 DROP  |H-J        |7-10       |3-4        |mini       |0          |0          |700-1500   |           |launch 3-4 minions   in 4 drop point (use drop point number 7,8,9,10) x 2 sides   - 6-8 minions
 
       |VECTOR_____|SIDE_______|DROP_POINTS|ADDTILES___|VERSUS_____|RANDOMX_PX_|RANDOMY_PX_|___________|MAKE VECTOR to launch spells
-MAKE  |A          |FRONT-RIGHT|60         |-6         |INT-EXT    |0          |5          |           |
+MAKE  |A          |FRONT-RIGHT|50         |-6         |INT-EXT    |0          |5          |           |
       |VECTOR_____|INDEX______|QTY_X_VECT_|TROOPNAME__|DELAY_DROP_|DELAYCHANGE|SLEEPAFTER_|___________|
 DROP  |A          |1          |1          |HSpell     |0          |0          |300-500    |           |Heal Spell at -6 tiles from redarea
 
@@ -54,9 +56,9 @@ MAKE  |H          |FRONT-LEFT |10         |3          |EXT-INT    |0          |5
 MAKE  |I          |FRONT-RIGHT|10         |3          |INT-EXT    |0          |5          |           |vector for archers front right n.1
 MAKE  |J          |FRONT-RIGHT|10         |3          |EXT-INT    |0          |5          |           |vector for archers front right n.2
 MAKE  |K          |FRONT-RIGHT|60         |-6         |INT-EXT    |0          |5          |           |
+
       |VECTOR_____|INDEX______|QTY_X_VECT_|TROOPNAME__|DELAY_DROP_|DELAYCHANGE|SLEEPAFTER_|___________|LAUNCH FRONT SIDE GIANTS, BARBARIANS AND ARCHERS...
-DROP  |A-B        |2-3        |8          |giant      |0          |0          |300-500    |           |launch giant (2 giant, one front left and one front right)                        - 2 giant
-DROP  |A-B        |1          |3-4        |Wall       |0          |0          |300-500    |           |launch 3-4 wallbreaker in 1 drop point                                            - 3-4 wallbreaker
+DROP  |A-B        |1          |1-2        |Wall       |0          |0          |300-500    |           |launch 3-4 wallbreaker in 1 drop point                                            - 3-4 wallbreaker
 DROP  |C-E        |1-5        |10-15      |barb       |0          |0          |0          |           |launch 5-6 barbarian in 5 drop point (use drop point number 1,2,3,4,5) x 2 sides  - 10-12 barb
 DROP  |G-I        |1-5        |10-15      |arch       |0          |0          |0          |           |launch 5-6 archers   in 5 drop point (use drop point number 1,2,3,4,5) x 2 sides  - 10-12 arch
 DROP  |G-I        |1-5        |5-6        |mini       |0          |0          |0          |           |launch 5-6 minions   in 5 drop point (use drop point number 1,2,3,4,5) x 2 sides  - 10-12 minions
@@ -72,7 +74,7 @@ DROP  |C          |5          |1          |Warden     |0          |0          |1
 WAIT  |500-1000   |           |           |           |           |           |           |           |Add a wait time; during wait time also CHECK exit values (exit if no resource left, exit if one or two starts reach)
 
 RECALC|           |           |           |           |           |           |           |           |recalculate remaining troops and then launch...
-DROP  |A-B        |1          |3-4        |Wall       |0          |0          |300-500    |           |launch giant (2 giant, one front left and one front right)                        - 2 giant
+DROP  |A-B        |1          |1-2        |Wall       |0          |0          |300-500    |           |launch giant (2 giant, one front left and one front right)                        - 2 giant
 DROP  |C-E        |1-5        |50         |barb       |0          |0          |0          |           |launch 5-6 barbarian in 5 drop point (use drop point number 1,2,3,4,5) x 2 sides  - remaining barb
 DROP  |G-I        |1-5        |50         |arch       |0          |0          |0          |           |launch 5-6 archers   in 5 drop point (use drop point number 1,2,3,4,5) x 2 sides  - remaining arch
 DROP  |G-I        |1-5        |50         |mini       |0          |0          |0          |           |launch 5-6 minions   in 5 drop point (use drop point number 1,2,3,4,5) x 2 sides  - remaining minions
