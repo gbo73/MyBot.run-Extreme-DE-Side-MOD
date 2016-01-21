@@ -948,3 +948,22 @@ Global $itxtMinDark
 Global $txtMinDark
 Global $iLTSpellCost, $LTSCost , $LTSpellCost
 
+;SettingSwitch
+Global $icmbRecSetting
+Global $cmbRecSetting
+Global $cmbSearchMode
+Global $cmbDBMeetGE
+Global $cmbABMeetGE
+Global $cmbABMeetGEHero
+Global $cmbAttackTHType
+Global $cmbTHSpellType
+Global $cmbAttackbottomType
+Global $cmbDetectTrapedTH
+Global $cmbTroopComp
+
+;Hero Healing Filter
+Global $LBsave[17], $LBHeroFilter, $LBAQFilter, $LBBKFilter, $iSkipCentreDE, $iSkipUndetectedDE, $DECorepix = 15
+Global $LBBKEQFilter
+Global $iCmbMeetGEHero, $iChkMeetDEHero, $iChkMeetTrophyHero, $iChkMeetTHHero, $iChkMeetTHOHero, $iChkWeakBaseHero, $iChkMeetOneHero, $iEnableAfterCountHero, $iMinGoldHero
+Global $iMinElixirHero, $iMinGoldPlusElixirHero,$iMinDarkHero, $iMinTrophyHero, $iCmbTHHero, $iCmbWeakMortarHero, $iCmbWeakWizTowerHero, $iMaxTHHero
+Global $THString

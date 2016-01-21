@@ -166,6 +166,7 @@
 #include "functions\Other\SwitchAccount.au3"
 #include "functions\Other\DetectAccount.au3"
 #include "functions\Other\SwitchDonate.au3"
+#include "functions\Other\SettingSwitch.au3"
 
 #include "functions\Pixels\_CaptureRegion.au3"
 #include "functions\Pixels\_ColorCheck.au3"
@@ -203,6 +204,7 @@
 #include "functions\Search\VillageSearch.au3"
 #include "functions\Search\CheckZoomOut.au3"
 #include "functions\Search\SearchTownHallloc.au3"
+#include "functions\Search\CheckHeroAvailable.au3"
 
 #include "functions\Village\BoostBarracks.au3"
 #include "functions\Village\BotDetectFirstTime.au3"

@@ -68,3 +68,7 @@ Func txtMinDark()
 	$itxtMinDark = GUICtrlRead($txtMinDark)
 	IniWrite($config, "options", "txtMinDark", $itxtMinDark)
 EndFunc
+
+ Func btnConfirmRecSetting()
+	switchRecSetting()
+EndFunc ;btnConfirmRecSetting

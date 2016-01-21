@@ -18,7 +18,7 @@ Func SwitchDonate()
 		 If $ichkSwitchDonate = 1 Then
 			SetLog("Switching account For Donate", $COLOR_blue)
 			DetectAccount()
-		If GUICtrlRead($account) = "Main" Then
+		If $iVillageName = "Main" Then
 
 			SwitchSecond()
 			$RunState = True
@@ -30,7 +30,7 @@ Func SwitchDonate()
 			ExitLoop
 			WEnd
 			SwitchMain()
-			ElseIf GUICtrlRead($account) = "Second"  Then
+			ElseIf $iVillageName = "Second" Then
 			SwitchMain()
 			$RunState = True
          While 1

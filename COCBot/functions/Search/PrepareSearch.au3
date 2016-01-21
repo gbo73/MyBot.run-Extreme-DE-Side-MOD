@@ -16,7 +16,7 @@
 Func PrepareSearch() ;Click attack button and find match button, will break shield
 
 	SetLog("Going to Attack...", $COLOR_BLUE)
-
+	Sleep (2000)
 	If IsMainPage() Then ClickP($aAttackButton, 1, 0, "#0149") ; Click Attack Button
 	If _Sleep($iDelayPrepareSearch1) Then Return
 
