@@ -46,8 +46,7 @@ Func SelectMain()
 			SetLog("Main account selected", $COLOR_blue)
 			Click($Message[0], $Message[1] + 63 + $midOffsetY) ;Select Main account
 			Sleep(2000)
-			SetLog("Click OK", $COLOR_blue)
-			Click(462, 492)
+			CheckOK()
 			ExitLoop
 		EndIf
 	WEnd
@@ -123,8 +122,7 @@ Func SelectSecond()
 			Sleep(1000)
 			Click($Message[0], $Message[1] + 112 + $midOffsetY) ;Select Second account
 			Sleep(2000)
-			SetLog("Click OK", $COLOR_blue)
-			Click(462, 492)
+			CheckOK()
 			ExitLoop
 		EndIf
 
@@ -171,3 +169,33 @@ Func LoadSecond() ; Load Second Account
 	WEnd
 
 EndFunc   ;==>LoadSecond
+
+
+
+Func CheckOK()
+
+	Local $OkX, $OkY
+	$Ok = @ScriptDir & "\images\Ok.png"
+	If Not FileExists($Ok) Then Return False
+	$OkLoc = 0
+	_CaptureRegion()
+	If _Sleep(500) Then Return
+	For $OkTol = 0 To 20
+		If $OkLoc = 0 Then
+			$OkX = 0
+			$OkY = 0
+			$OkLoc = _ImageSearch($Ok, 1, $OkX, $OkY, $OkTol)
+			If $OkLoc = 1 And isInsideDiamondXY($OkX, $OkY) Then
+				SetLog("Found Ok Button ", $COLOR_GREEN)
+				If $DebugSetLog = 1 Then SetLog("Ok Button found (" & $OkX & "," & $OkY & ") tolerance:" & $OkTol, $COLOR_PURPLE)
+				Click($OkX, $OkY,1,0,"#0120")
+				If _Sleep(500) Then Return
+				Return True
+			EndIf
+		EndIf
+	Next
+	If $DebugSetLog = 1 Then SetLog("Cannot find OK Button", $COLOR_PURPLE)
+	If _Sleep(500) Then Return
+	checkMainScreen(False) ; check for screen errors while function was running
+
+EndFunc   ;==>CheckOK Button
